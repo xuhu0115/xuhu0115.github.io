@@ -483,6 +483,33 @@
     .pub-group.hidden { display: none; }
     .pub.hidden { display: none; }
 
+    /* ----- Filter + Sort row ----- */
+    .pub-controls {
+      display: flex; flex-wrap: wrap; gap: 16px; align-items: center;
+      justify-content: space-between; margin: 6px 0 18px;
+    }
+    .pub-filters { margin: 0; }
+    .pub-sort { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .sort-label {
+      font-size: 11.5px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--text-faint); margin-right: 2px;
+    }
+    .sort-btn {
+      padding: 5px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 500;
+      background: transparent; color: var(--text-muted);
+      border: 1px solid var(--border); cursor: pointer; transition: all 0.15s ease;
+    }
+    .sort-btn:hover { color: var(--primary); border-color: var(--primary); }
+    .sort-btn.active { background: var(--bg-soft); color: var(--text); border-color: var(--border-strong); }
+    .sort-btn.active::before { content: '↓ '; color: var(--primary); font-weight: 700; }
+    @media (max-width: 600px) {
+      .pub-controls { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* Sort arrow indicator for cite mode */
+    [data-sort-mode="time"] .sort-btn[data-sort="time"]::before { content: '↓ '; }
+    [data-sort-mode="citations"] .sort-btn[data-sort="citations"]::before { content: '↓ '; }
+
     /* ----- Topic tags on each publication ----- */
     .pub-tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 0 0 6px; }
     .pub-tag {
@@ -592,6 +619,75 @@
     body, .topnav, .btn, .now-card, .pub, .proj, .featured, .pub-tldr, .pub-tag, .interest-pill {
       transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     }
+
+    /* ============================================================ */
+    /* ========== v2.3 — Blog & Reading Shelf ====================== */
+    /* ============================================================ */
+
+    /* Blog card */
+    .blog-card {
+      display: flex; align-items: center; gap: 20px;
+      padding: 22px 24px; border-radius: var(--radius-lg);
+      background: var(--bg-elev); border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm); transition: all 0.25s ease;
+      position: relative;
+    }
+    .blog-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .blog-icon {
+      flex-shrink: 0; width: 56px; height: 56px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, var(--primary-soft), #fef1e7);
+      font-size: 28px; line-height: 1;
+    }
+    .blog-body { flex: 1; min-width: 0; }
+    .blog-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .blog-platform {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+      background: #07c160; color: #fff; /* WeChat green */
+    }
+    .blog-date { font-size: 12.5px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; }
+    .blog-title { font-size: 18px; font-weight: 600; margin: 0 0 6px; line-height: 1.4; }
+    .blog-title a { color: var(--text); }
+    .blog-title a:hover { color: var(--primary); }
+    .blog-summary { font-size: 14px; color: var(--text-muted); margin: 0 0 10px; line-height: 1.55; }
+    .blog-footer { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
+    .blog-stats { display: flex; gap: 12px; font-size: 12.5px; color: var(--text-muted); }
+    .blog-stats b { color: var(--text); font-weight: 600; }
+    .blog-authors { font-size: 12px; color: var(--text-faint); font-style: italic; }
+    .blog-arrow {
+      flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--primary); color: #fff;
+      transition: all 0.2s ease;
+    }
+    .blog-arrow:hover { background: var(--primary-dark); transform: translateX(4px); }
+    .blog-arrow svg { width: 18px; height: 18px; }
+    @media (max-width: 600px) {
+      .blog-card { flex-direction: column; align-items: flex-start; padding: 18px; }
+      .blog-arrow { position: absolute; top: 18px; right: 18px; width: 32px; height: 32px; }
+    }
+
+    /* Reading shelf */
+    .reading-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 720px) { .reading-grid { grid-template-columns: 1fr; } }
+    .reading-col { padding: 18px 20px; border-radius: var(--radius); background: var(--bg-elev); border: 1px solid var(--border); }
+    .reading-col-head { margin-bottom: 12px; }
+    .reading-pill {
+      display: inline-block; padding: 4px 10px; border-radius: 999px;
+      background: var(--primary-soft); color: var(--primary-dark);
+      font-size: 12px; font-weight: 600;
+    }
+    [data-theme="dark"] .reading-pill { background: var(--primary-soft); color: var(--primary); }
+    .reading-list { list-style: none; padding: 0; margin: 0; }
+    .reading-item {
+      padding: 10px 0; border-top: 1px dashed var(--border);
+    }
+    .reading-item:first-child { border-top: none; padding-top: 4px; }
+    .ri-title { font-size: 14.5px; font-weight: 600; color: var(--text); line-height: 1.4; margin-bottom: 3px; }
+    .ri-meta { font-size: 12px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; margin-bottom: 5px; }
+    .ri-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .ri-tags .pub-tag { font-size: 10.5px; padding: 1px 6px; }
   </style>
 </head>
 <body>
@@ -607,6 +703,8 @@
       <a href="#about">About</a>
       <a href="#now">Now</a>
       <a href="#publications">Publications</a>
+      <a href="#blog">Blog</a>
+      <a href="#shelf">Shelf</a>
       <a href="#education">Education</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
@@ -759,17 +857,25 @@
       Each paper below is paired with a one-sentence summary so you can decide what's worth a deeper read.
     </p>
 
-    <!-- Filter tabs -->
-    <div class="pub-filters reveal delay-2" id="pubFilters">
-      <button class="filter-btn active" data-filter="all">All <span class="count" id="cnt-all">7</span></button>
-      <button class="filter-btn glow-btn" data-filter="conference">Conferences <span class="count" id="cnt-conference">1</span></button>
-      <button class="filter-btn glow-btn" data-filter="journal">Journals <span class="count" id="cnt-journal">2</span></button>
-      <button class="filter-btn glow-btn" data-filter="preprint">Preprints <span class="count" id="cnt-preprint">2</span></button>
-      <button class="filter-btn glow-btn" data-filter="patent">Patents <span class="count" id="cnt-patent">2</span></button>
+    <!-- Filter + Sort row -->
+    <div class="pub-controls reveal delay-2">
+      <div class="pub-filters" id="pubFilters">
+        <button class="filter-btn glow-btn active" data-filter="all">All <span class="count" id="cnt-all">7</span></button>
+        <button class="filter-btn glow-btn" data-filter="conference">Conferences <span class="count" id="cnt-conference">1</span></button>
+        <button class="filter-btn glow-btn" data-filter="journal">Journals <span class="count" id="cnt-journal">2</span></button>
+        <button class="filter-btn glow-btn" data-filter="preprint">Preprints <span class="count" id="cnt-preprint">2</span></button>
+        <button class="filter-btn glow-btn" data-filter="patent">Patents <span class="count" id="cnt-patent">2</span></button>
+      </div>
+      <div class="pub-sort" id="pubSort">
+        <span class="sort-label">Sort</span>
+        <button class="sort-btn glow-btn active" data-sort="venue">by Venue</button>
+        <button class="sort-btn glow-btn" data-sort="time">Latest</button>
+        <button class="sort-btn glow-btn" data-sort="citations">Citations</button>
+      </div>
     </div>
 
     <!-- Featured spotlight -->
-    <div class="featured reveal glow" data-type="preprint" id="featuredPub">
+    <div class="featured reveal glow" data-type="preprint" data-year="2025" data-citations="1" id="featuredPub">
       <div class="star">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.18 21 12 16.51 5.82 21l2.36-7.15L2 9.36h7.61L12 2z"/></svg>
         Featured · latest pre-print
@@ -802,7 +908,7 @@
     <div class="pub-group" data-group="conference">
       <span class="pub-group-label">📚 Conferences &amp; Findings</span>
 
-      <div class="pub reveal glow" data-type="conference">
+      <div class="pub reveal glow" data-type="conference" data-year="2025" data-citations="3">
         <div class="pub-head">
           <span class="pub-venue venue-emnlp">EMNLP 2025 Findings</span>
         </div>
@@ -832,7 +938,7 @@
     <div class="pub-group" data-group="journal">
       <span class="pub-group-label">📖 Journals</span>
 
-      <div class="pub reveal glow" data-type="journal">
+      <div class="pub reveal glow" data-type="journal" data-year="2026" data-citations="0">
         <div class="pub-head">
           <span class="pub-venue venue-bmc">BMC Bioinformatics 2026</span>
         </div>
@@ -857,7 +963,7 @@
         </div>
       </div>
 
-      <div class="pub reveal glow" data-type="journal">
+      <div class="pub reveal glow" data-type="journal" data-year="2025" data-citations="5">
         <div class="pub-head">
           <span class="pub-venue venue-airev">Artificial Intelligence Review 2025</span>
         </div>
@@ -887,7 +993,7 @@
     <div class="pub-group" data-group="preprint">
       <span class="pub-group-label">📝 Preprints</span>
 
-      <div class="pub reveal glow" data-type="preprint">
+      <div class="pub reveal glow" data-type="preprint" data-year="2025" data-citations="0">
         <div class="pub-head">
           <span class="pub-venue venue-arxiv">Preprint</span>
         </div>
@@ -912,7 +1018,7 @@
     <div class="pub-group" data-group="patent">
       <span class="pub-group-label">🧪 Patents &amp; Software Copyrights</span>
 
-      <div class="pub reveal glow" data-type="patent">
+      <div class="pub reveal glow" data-type="patent" data-year="2025" data-citations="0">
         <div class="pub-head">
           <span class="pub-venue venue-patent">Patent · CN 202510471992.4</span>
         </div>
@@ -935,7 +1041,7 @@
         </div>
       </div>
 
-      <div class="pub reveal glow" data-type="patent">
+      <div class="pub reveal glow" data-type="patent" data-year="2025" data-citations="0">
         <div class="pub-head">
           <span class="pub-venue venue-copyright">Software Copyright · 2025R1150873771</span>
         </div>
@@ -1028,6 +1134,105 @@
         <div class="proj-name"><a href="https://github.com/xuhu0115" target="_blank" rel="noopener">More on GitHub</a></div>
         <div class="proj-desc">Personal experiments, paper code, and small tools — see the full list on my GitHub profile.</div>
         <div class="proj-stats">→ github.com/xuhu0115</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Blog ============== -->
+<section id="blog">
+  <div class="wrap">
+    <h2 class="section-title reveal">Blog &amp; Writing</h2>
+    <p style="font-size: 14.5px; color: var(--text-muted); margin: -10px 0 22px;" class="reveal delay-1">
+      Occasional long-form pieces — mostly Chinese, on 公众号 and technical notes.
+    </p>
+    <div class="blog-card reveal glow delay-2">
+      <div class="blog-icon">📰</div>
+      <div class="blog-body">
+        <div class="blog-meta">
+          <span class="blog-platform">微信公众号</span>
+          <span class="blog-date">2024</span>
+        </div>
+        <h3 class="blog-title">
+          <a href="https://mp.weixin.qq.com/s/Zau10ioTWzhj0KOImpasNg" target="_blank" rel="noopener">
+            《图灵奖得主 LeCun，关于大模型的下一步来了》
+          </a>
+        </h3>
+        <p class="blog-summary">
+          A popular-science explainer on Yann LeCun's vision for the next generation of LLMs — JEPA, world models, and the road beyond token prediction. Co-written with three collaborators.
+        </p>
+        <div class="blog-footer">
+          <div class="blog-stats">
+            <span>👁 <b>7,726</b> views</span>
+            <span>♡ <b>181</b> likes</span>
+            <span>↗ <b>730</b> shares</span>
+          </div>
+          <div class="blog-authors">Hu Xu, Shengkang Li, Yinhe Jiang, Youzhen Li</div>
+        </div>
+      </div>
+      <a class="blog-arrow" href="https://mp.weixin.qq.com/s/Zau10ioTWzhj0KOImpasNg" target="_blank" rel="noopener" aria-label="Read article">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== Reading Shelf ============== -->
+<section id="shelf">
+  <div class="wrap">
+    <h2 class="section-title reveal">Reading Shelf</h2>
+    <p style="font-size: 14.5px; color: var(--text-muted); margin: -10px 0 22px;" class="reveal delay-1">
+      What's on my desk right now and what's queued up next. <em>Edit me — these are the papers I'm tracking this term.</em>
+    </p>
+    <div class="reading-grid">
+      <div class="reading-col reveal delay-1">
+        <div class="reading-col-head">
+          <span class="reading-pill">📖 Now reading</span>
+        </div>
+        <ul class="reading-list">
+          <li class="reading-item">
+            <div class="ri-title">The Llama 3 Herd of Models</div>
+            <div class="ri-meta">Grattafiori et al. · Meta AI · 2024 · Technical Report</div>
+            <div class="ri-tags"><span class="pub-tag t-reasoning">LLM Training</span><span class="pub-tag t-reasoning">SFT / RLHF</span></div>
+          </li>
+          <li class="reading-item">
+            <div class="ri-title">Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection</div>
+            <div class="ri-meta">Asai et al. · ICLR 2024</div>
+            <div class="ri-tags"><span class="pub-tag t-reasoning">RAG</span><span class="pub-tag t-reasoning">Reflection</span></div>
+          </li>
+          <li class="reading-item">
+            <div class="ri-title">Process Reward Models</div>
+            <div class="ri-meta">Lightman et al. · ICML 2024</div>
+            <div class="ri-tags"><span class="pub-tag t-reasoning">Reasoning</span><span class="pub-tag t-reasoning">PRM</span></div>
+          </li>
+        </ul>
+      </div>
+      <div class="reading-col reveal delay-2">
+        <div class="reading-col-head">
+          <span class="reading-pill">📚 On the shelf</span>
+        </div>
+        <ul class="reading-list">
+          <li class="reading-item">
+            <div class="ri-title">Constitutional AI: Harmlessness from AI Feedback</div>
+            <div class="ri-meta">Bai et al. · Anthropic · 2022</div>
+            <div class="ri-tags"><span class="pub-tag t-theory">Alignment</span><span class="pub-tag t-theory">RLHF</span></div>
+          </li>
+          <li class="reading-item">
+            <div class="ri-title">Direct Preference Optimization</div>
+            <div class="ri-meta">Rafailov et al. · NeurIPS 2023</div>
+            <div class="ri-tags"><span class="pub-tag t-theory">DPO</span><span class="pub-tag t-theory">Post-training</span></div>
+          </li>
+          <li class="reading-item">
+            <div class="ri-title">V2X-ViT: Vehicle-to-Everything Cooperative Perception with Vision Transformer</div>
+            <div class="ri-meta">Xu et al. · ECCV 2022</div>
+            <div class="ri-tags"><span class="pub-tag t-v2x">V2X</span><span class="pub-tag t-v2x">Transformer</span></div>
+          </li>
+          <li class="reading-item">
+            <div class="ri-title">Test-Time Training for LLMs</div>
+            <div class="ri-meta">Sun et al. · 2024 · preprint</div>
+            <div class="ri-tags"><span class="pub-tag t-reasoning">TTT</span><span class="pub-tag t-reasoning">Long-context</span></div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1252,6 +1457,27 @@
         el.style.setProperty('--my', (e.clientY - r.top) + 'px');
       });
     });
+  })();
+
+  // 10) Publications sort
+  (function () {
+    const btns = document.querySelectorAll('#pubSort .sort-btn');
+    const groups = document.querySelectorAll('.pub-group');
+    function sortPubs(mode) {
+      btns.forEach(b => b.classList.toggle('active', b.dataset.sort === mode));
+      document.documentElement.setAttribute('data-sort-mode', mode);
+      groups.forEach(g => {
+        const pubs = Array.from(g.querySelectorAll('.pub'));
+        if (mode === 'time') {
+          pubs.sort((a, b) => (+b.dataset.year || 0) - (+a.dataset.year || 0));
+        } else if (mode === 'citations') {
+          pubs.sort((a, b) => (+b.dataset.citations || 0) - (+a.dataset.citations || 0));
+        }
+        // 'venue' = original DOM order, so don't reorder
+        pubs.forEach(p => g.appendChild(p));
+      });
+    }
+    btns.forEach(b => b.addEventListener('click', () => sortPubs(b.dataset.sort)));
   })();
 </script>
 
