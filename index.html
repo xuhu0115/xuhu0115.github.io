@@ -1371,7 +1371,7 @@
     <p>
       © 2026 Hu Xu · Built with care on
       <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>
-      · <a href="./index.html">Old Resume-style Homepage</a>
+      · <a href="./resume.html">Old Resume-style Homepage</a>
     </p>
   </div>
 </footer>
@@ -1673,12 +1673,13 @@
         const key = el.dataset.i18n;
         if (dict[key] != null) el.textContent = dict[key];
       });
-      // Dynamic hrefs for CV + language switcher (same target = Chinese resume,
-      // since the only correct CV lives at Chinese/index.html; language toggle
-      // returns to ./ for the EN version)
+      // Dynamic hrefs for CV + language switcher
+      // - EN: data-cv -> ./resume.html (the v1 English resume, the real EN CV)
+      // - zh: data-cv -> ./Chinese/index.html (the v1 Chinese resume, the real zh CV)
+      // - lang toggle: zh mode -> back to ./ for the EN version
       const cvLink = document.querySelector('[data-cv]');
       const langLink = document.querySelector('[data-lang-link]');
-      if (cvLink) cvLink.setAttribute('href', './Chinese/index.html');
+      if (cvLink) cvLink.setAttribute('href', lang === 'zh' ? './Chinese/index.html' : './resume.html');
       if (langLink) langLink.setAttribute('href', lang === 'zh' ? './index.html' : './Chinese/index.html');
       // Special case: status badge — only the inner text, not the pulse dot
       const badge = document.querySelector('.status-badge span:last-child');
