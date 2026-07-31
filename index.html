@@ -28,6 +28,9 @@
   <meta name="twitter:image" content="./og-image.svg" />
   <meta name="theme-color" content="#0d6e6e" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)" />
+  <!-- OpenAlex: replace the content with your author ID (e.g. A12345678).
+       If empty, the script falls back to a name search. -->
+  <meta name="openalex-author-id" content="" />
   <style>
     /* ----- Reset & Base ----- */
     *, *::before, *::after { box-sizing: border-box; }
@@ -688,6 +691,48 @@
     .ri-meta { font-size: 12px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; margin-bottom: 5px; }
     .ri-tags { display: flex; flex-wrap: wrap; gap: 4px; }
     .ri-tags .pub-tag { font-size: 10.5px; padding: 1px 6px; }
+
+    /* ============================================================ */
+    /* ========== v2.4 — Stats Dashboard & Language ============== */
+    /* ============================================================ */
+
+    /* Stats grid */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+    .stat-card {
+      position: relative; padding: 22px 22px 18px;
+      border-radius: var(--radius); background: var(--bg-elev);
+      border: 1px solid var(--border); transition: all 0.25s ease;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      opacity: 0.6;
+    }
+    .stat-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .stat-num {
+      font-size: 36px; font-weight: 800; color: var(--text);
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat-label { font-size: 13px; font-weight: 600; color: var(--text); }
+    .stat-sub { font-size: 11.5px; color: var(--text-faint); margin-top: 3px; }
+
+    /* Language toggle */
+    .lang-toggle {
+      display: inline-flex; align-items: center; gap: 2px;
+      padding: 3px; border-radius: 999px;
+      background: var(--bg-elev); border: 1px solid var(--border);
+      font-size: 12px; font-weight: 600; margin-left: 4px;
+    }
+    .lang-toggle button {
+      padding: 4px 10px; border-radius: 999px;
+      background: transparent; color: var(--text-muted);
+      border: none; cursor: pointer; transition: all 0.15s ease;
+    }
+    .lang-toggle button:hover { color: var(--primary); }
+    .lang-toggle button.active { background: var(--primary); color: #fff; }
+    [data-theme="dark"] .lang-toggle button.active { color: #0e1014; }
   </style>
 </head>
 <body>
@@ -700,18 +745,22 @@
   <div class="topnav-inner">
     <div class="brand">Hu Xu<span>.</span></div>
     <div class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#now">Now</a>
-      <a href="#publications">Publications</a>
-      <a href="#blog">Blog</a>
-      <a href="#shelf">Shelf</a>
-      <a href="#education">Education</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#honors">Honors</a>
-      <a href="#talks">Talks</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#now" data-i18n="nav.now">Now</a>
+      <a href="#publications" data-i18n="nav.pubs">Publications</a>
+      <a href="#blog" data-i18n="nav.blog">Blog</a>
+      <a href="#shelf" data-i18n="nav.shelf">Shelf</a>
+      <a href="#education" data-i18n="nav.edu">Education</a>
+      <a href="#experience" data-i18n="nav.exp">Experience</a>
+      <a href="#projects" data-i18n="nav.proj">Projects</a>
+      <a href="#honors" data-i18n="nav.honors">Honors</a>
+      <a href="#talks" data-i18n="nav.talks">Talks</a>
     </div>
     <div style="display:flex; align-items:center; gap:4px;">
+      <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+        <button class="active" data-lang="en">EN</button>
+        <button data-lang="zh">中</button>
+      </div>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -735,11 +784,11 @@
       <div>
         <div class="status-badge reveal">
           <span class="pulse"></span>
-          <span>PhD Candidate @ SJTU · 2024 — present</span>
+          <span data-i18n="status.badge">PhD Candidate @ SJTU · 2024 — present</span>
         </div>
         <h1 class="hero-name reveal delay-1">Hu Xu<span class="cn">徐虎</span></h1>
         <p class="hero-tagline reveal delay-2">
-          <span class="typed-wrap">Working on </span><span class="typed" id="typed"></span>
+          <span class="typed-wrap" data-i18n="hero.working">Working on </span><span class="typed" id="typed"></span>
         </p>
         <p class="hero-bio reveal delay-3">
           I work on making large language models more <em>efficient</em>, <em>interpretable</em>, and <em>collaborative</em> — from data quality and post-training pruning, to multi-agent communication and cooperative perception. Open to research collaboration — feel free to reach out. 😊
@@ -747,13 +796,13 @@
         <div class="hero-cta">
           <a class="btn btn-primary glow-btn" href="mailto:xuhu6736@sjtu.edu.cn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l9 6 9-6M3 8v10a2 2 0 002 2h14a2 2 0 002-2V8M3 8l9-5 9 5"/></svg>
-            Email Me
+            <span data-i18n="btn.email">Email Me</span>
           </a>
-          <a class="btn" href="./xuhu_Academic_CV_2_0.pdf">
+          <a class="btn glow-btn" href="./xuhu_Academic_CV_2_0.pdf">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
-            View CV
+            <span data-i18n="btn.cv">View CV</span>
           </a>
-          <a class="btn" href="./Chinese/index.html">中文版</a>
+          <a class="btn glow-btn" href="./Chinese/index.html" data-i18n="btn.zh">中文版</a>
         </div>
         <div class="socials">
           <a href="mailto:xuhu6736@sjtu.edu.cn" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l9 6 9-6M3 8v10a2 2 0 002 2h14a2 2 0 002-2V8M3 8l9-5 9 5"/></svg></a>
@@ -776,10 +825,43 @@
   </div>
 </header>
 
+<!-- ============== Stats Dashboard ============== -->
+<section id="stats">
+  <div class="wrap">
+    <h2 class="section-title reveal" data-i18n="section.stats">Academic Stats</h2>
+    <p style="font-size: 14.5px; color: var(--text-muted); margin: -10px 0 22px;" class="reveal delay-1">
+      <span data-i18n="stats.intro">Live numbers pulled from </span><a href="https://openalex.org" target="_blank" rel="noopener" style="color:var(--primary); font-weight:500;">OpenAlex</a>.
+      Last fetched: <span id="statsUpdated" data-i18n="stats.loading">loading…</span>
+    </p>
+    <div class="stats-grid">
+      <div class="stat-card reveal glow">
+        <div class="stat-num" data-stat="cited_by_count" id="stat-citations">—</div>
+        <div class="stat-label" data-i18n="stats.label.cit">Total Citations</div>
+        <div class="stat-sub" data-i18n="stats.sub.cit">across all works</div>
+      </div>
+      <div class="stat-card reveal glow delay-1">
+        <div class="stat-num" data-stat="h_index" id="stat-h">—</div>
+        <div class="stat-label" data-i18n="stats.label.h">h-index</div>
+        <div class="stat-sub" data-i18n="stats.sub.h">2-year mean citedness</div>
+      </div>
+      <div class="stat-card reveal glow delay-2">
+        <div class="stat-num" data-stat="i10_index" id="stat-i10">—</div>
+        <div class="stat-label" data-i18n="stats.label.i10">i10-index</div>
+        <div class="stat-sub" data-i18n="stats.sub.i10">works cited 10+ times</div>
+      </div>
+      <div class="stat-card reveal glow delay-3">
+        <div class="stat-num" data-stat="works_count" id="stat-works">—</div>
+        <div class="stat-label" data-i18n="stats.label.works">Works</div>
+        <div class="stat-sub" data-i18n="stats.sub.works">papers + preprints</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============== About ============== -->
 <section id="about" class="about">
   <div class="wrap">
-    <h2 class="section-title reveal">About</h2>
+    <h2 class="section-title reveal" data-i18n="section.about">About</h2>
     <p>
       I'm a PhD candidate at the <a href="https://www.cs.sjtu.edu.cn/" target="_blank" rel="noopener">School of Computer Science and Engineering</a>,
       Shanghai Jiao Tong University, advised by Prof. <a href="https://zhsf.sjtu.edu.cn/info/1447/6574.htm" target="_blank" rel="noopener">Jianfeng Xu (许建峰)</a>.
@@ -812,9 +894,9 @@
 <!-- ============== Now ============== -->
 <section id="now">
   <div class="wrap">
-    <h2 class="section-title reveal">What I'm Doing Now</h2>
+    <h2 class="section-title reveal" data-i18n="section.now">What I'm Doing Now</h2>
     <p style="font-size: 14.5px; color: var(--text-muted); margin: -10px 0 22px;" class="reveal delay-1">
-      A snapshot of where my attention is going this term. <em>(Updated 2026.08)</em>
+      <span data-i18n="now.intro">A snapshot of where my attention is going this term.</span> <em>(Updated 2026.08)</em>
     </p>
     <div class="now-grid">
       <div class="now-card reveal glow">
@@ -852,9 +934,9 @@
 <!-- ============== Publications (CENTERPIECE) ============== -->
 <section id="publications">
   <div class="wrap">
-    <h2 class="section-title reveal">Publications</h2>
+    <h2 class="section-title reveal" data-i18n="section.pubs">Publications</h2>
     <p style="font-size: 14.5px; color: var(--text-muted); margin: -10px 0 18px;" class="reveal delay-1">
-      Each paper below is paired with a one-sentence summary so you can decide what's worth a deeper read.
+      <span data-i18n="pubs.intro">Each paper below is paired with a one-sentence summary so you can decide what's worth a deeper read.</span>
     </p>
 
     <!-- Filter + Sort row -->
@@ -1065,7 +1147,7 @@
 <!-- ============== Education ============== -->
 <section id="education">
   <div class="wrap">
-    <h2 class="section-title reveal">Education</h2>
+    <h2 class="section-title reveal" data-i18n="section.edu">Education</h2>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-head">Ph.D. Candidate in Computer Science and Engineering</div>
@@ -1089,7 +1171,7 @@
 <!-- ============== Experience ============== -->
 <section id="experience">
   <div class="wrap">
-    <h2 class="section-title reveal">Experience</h2>
+    <h2 class="section-title reveal" data-i18n="section.exp">Experience</h2>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-head">Algorithm Intern (Research) · <a href="https://www.jd.com/" target="_blank" rel="noopener">JD (JINGDONG)</a></div>
@@ -1113,7 +1195,7 @@
 <!-- ============== Projects ============== -->
 <section id="projects">
   <div class="wrap">
-    <h2 class="section-title reveal">Open-Source Projects</h2>
+    <h2 class="section-title reveal" data-i18n="section.proj">Open-Source Projects</h2>
     <div class="proj-grid">
       <div class="proj glow">
         <div class="proj-name"><a href="https://github.com/datawhalechina/diy-llm" target="_blank" rel="noopener">diy-llm</a></div>
@@ -1142,9 +1224,9 @@
 <!-- ============== Blog ============== -->
 <section id="blog">
   <div class="wrap">
-    <h2 class="section-title reveal">Blog &amp; Writing</h2>
+    <h2 class="section-title reveal" data-i18n="section.blog">Blog &amp; Writing</h2>
     <p style="font-size: 14.5px; color: var(--text-muted); margin: -10px 0 22px;" class="reveal delay-1">
-      Occasional long-form pieces — mostly Chinese, on 公众号 and technical notes.
+      <span data-i18n="blog.intro">Occasional long-form pieces — mostly Chinese, on 公众号 and technical notes.</span>
     </p>
     <div class="blog-card reveal glow delay-2">
       <div class="blog-icon">📰</div>
@@ -1180,14 +1262,14 @@
 <!-- ============== Reading Shelf ============== -->
 <section id="shelf">
   <div class="wrap">
-    <h2 class="section-title reveal">Reading Shelf</h2>
+    <h2 class="section-title reveal" data-i18n="section.shelf">Reading Shelf</h2>
     <p style="font-size: 14.5px; color: var(--text-muted); margin: -10px 0 22px;" class="reveal delay-1">
-      What's on my desk right now and what's queued up next. <em>Edit me — these are the papers I'm tracking this term.</em>
+      <span data-i18n="shelf.intro">What's on my desk right now and what's queued up next.</span> <em data-i18n="shelf.edit">Edit me — these are the papers I'm tracking this term.</em>
     </p>
     <div class="reading-grid">
       <div class="reading-col reveal delay-1">
         <div class="reading-col-head">
-          <span class="reading-pill">📖 Now reading</span>
+          <span class="reading-pill" data-i18n="shelf.now">📖 Now reading</span>
         </div>
         <ul class="reading-list">
           <li class="reading-item">
@@ -1209,7 +1291,7 @@
       </div>
       <div class="reading-col reveal delay-2">
         <div class="reading-col-head">
-          <span class="reading-pill">📚 On the shelf</span>
+          <span class="reading-pill" data-i18n="shelf.queue">📚 On the shelf</span>
         </div>
         <ul class="reading-list">
           <li class="reading-item">
@@ -1241,7 +1323,7 @@
 <!-- ============== Honors ============== -->
 <section id="honors">
   <div class="wrap">
-    <h2 class="section-title reveal">Selected Honors &amp; Awards</h2>
+    <h2 class="section-title reveal" data-i18n="section.honors">Selected Honors &amp; Awards</h2>
     <ul class="list">
       <li><b>2025</b> · Second Prize, Shanghai Jiao Tong University Student Summer Social Practice ("Research on Digital Justice Practice in Court Trials Empowered by Smart Justice", KoGuan Law School Team).</li>
       <li><b>2023</b> · Innovation Award, iFLYTEK "Spark Cup" Cognitive LLM Innovation Competition (Project: "Chat Health Assistant", TOP 50).</li>
@@ -1262,7 +1344,7 @@
 <!-- ============== Talks & Activities ============== -->
 <section id="talks">
   <div class="wrap">
-    <h2 class="section-title reveal">Talks, Services &amp; Activities</h2>
+    <h2 class="section-title reveal" data-i18n="section.talks">Talks, Services &amp; Activities</h2>
     <h3 style="margin-top: 0;">Invited Talks</h3>
     <ul class="list">
       <li><b>2024.07.24</b> · Datawhale AI Summer Camp Session 2 — Getting Started with AI Competitions (NLP Track): Baseline Interpretation &amp; Advanced Sharing. <a href="https://www.bilibili.com/video/BV1AU411S71h" target="_blank" rel="noopener">Bilibili</a></li>
@@ -1478,6 +1560,131 @@
       });
     }
     btns.forEach(b => b.addEventListener('click', () => sortPubs(b.dataset.sort)));
+  })();
+
+  // 11) OpenAlex stats — live citations / h-index / i10 / works
+  (function () {
+    const updated = document.getElementById('statsUpdated');
+    const authorIdMeta = document.querySelector('meta[name="openalex-author-id"]');
+    const authorId = authorIdMeta ? authorIdMeta.content.trim() : '';
+    const MAILTO = 'xuhu6736@sjtu.edu.cn';
+    const url = authorId
+      ? `https://api.openalex.org/authors/${authorId}?mailto=${MAILTO}`
+      : `https://api.openalex.org/authors?search=Hu%20Xu&per_page=1&mailto=${MAILTO}`;
+    function animate(el, target) {
+      const dur = 1200; const start = performance.now();
+      function tick(now) {
+        const t = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(target * eased).toLocaleString();
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+    function setValue(id, v) {
+      const el = document.getElementById(id);
+      if (el && typeof v === 'number') animate(el, v);
+    }
+    fetch(url)
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(data => {
+        const a = authorId ? data : (data.results && data.results[0]);
+        if (!a) throw new Error('No author found');
+        setValue('stat-citations', a.cited_by_count || 0);
+        const s = a.summary_stats || {};
+        setValue('stat-h', s['2yr_mean_citedness'] != null ? Math.round(s['2yr_mean_citedness']) : 0);
+        // OpenAlex h-index / i10 — fall back to cited_by_count if absent
+        setValue('stat-i10', a.summary_stats && a.summary_stats.i10_index || 0);
+        setValue('stat-works', a.works_count || 0);
+        if (updated) updated.textContent = new Date().toLocaleString();
+      })
+      .catch(err => {
+        console.warn('OpenAlex fetch failed:', err);
+        if (updated) updated.textContent = 'unavailable (API blocked or CORS)';
+        // Fallback: keep the dashes
+      });
+  })();
+
+  // 12) Language toggle (EN ⇄ 中)
+  (function () {
+    const I18N = {
+      en: {
+        'nav.about': 'About', 'nav.now': 'Now', 'nav.pubs': 'Publications',
+        'nav.blog': 'Blog', 'nav.shelf': 'Shelf', 'nav.edu': 'Education',
+        'nav.exp': 'Experience', 'nav.proj': 'Projects', 'nav.honors': 'Honors',
+        'nav.talks': 'Talks',
+        'status.badge': 'PhD Candidate @ SJTU · 2024 — present',
+        'hero.working': 'Working on ',
+        'section.about': 'About', 'section.now': "What I'm Doing Now",
+        'section.stats': 'Academic Stats', 'section.pubs': 'Publications',
+        'section.blog': 'Blog & Writing', 'section.shelf': 'Reading Shelf',
+        'section.edu': 'Education', 'section.exp': 'Experience',
+        'section.proj': 'Open-Source Projects', 'section.honors': 'Selected Honors & Awards',
+        'section.talks': 'Talks, Services & Activities',
+        'stats.intro': 'Live numbers pulled from ',
+        'stats.loading': 'loading…',
+        'stats.label.cit': 'Total Citations', 'stats.label.h': 'h-index',
+        'stats.label.i10': 'i10-index', 'stats.label.works': 'Works',
+        'stats.sub.cit': 'across all works', 'stats.sub.h': '2-year mean citedness',
+        'stats.sub.i10': 'works cited 10+ times', 'stats.sub.works': 'papers + preprints',
+        'now.intro': 'A snapshot of where my attention is going this term. ',
+        'pubs.intro': 'Each paper below is paired with a one-sentence summary so you can decide what’s worth a deeper read.',
+        'blog.intro': 'Occasional long-form pieces — mostly Chinese, on 公众号 and technical notes.',
+        'shelf.intro': "What’s on my desk right now and what’s queued up next. ",
+        'shelf.edit': "Edit me — these are the papers I'm tracking this term.",
+        'shelf.now': '📖 Now reading', 'shelf.queue': '📚 On the shelf',
+        'btn.email': 'Email Me', 'btn.cv': 'View CV', 'btn.zh': '中文版',
+      },
+      zh: {
+        'nav.about': '关于', 'nav.now': '当下', 'nav.pubs': '论文',
+        'nav.blog': '博客', 'nav.shelf': '书架', 'nav.edu': '教育',
+        'nav.exp': '经历', 'nav.proj': '项目', 'nav.honors': '荣誉',
+        'nav.talks': '分享',
+        'status.badge': '上海交通大学 博士在读 · 2024 — 至今',
+        'hero.working': '研究方向：',
+        'section.about': '关于我', 'section.now': '我最近在做什么',
+        'section.stats': '学术指标', 'section.pubs': '发表论文',
+        'section.blog': '博客与随笔', 'section.shelf': '在读书单',
+        'section.edu': '教育背景', 'section.exp': '研究经历',
+        'section.proj': '开源项目', 'section.honors': '荣誉与奖项',
+        'section.talks': '分享、服务与活动',
+        'stats.intro': '数据来自 ',
+        'stats.loading': '加载中…',
+        'stats.label.cit': '总引用', 'stats.label.h': 'h 指数',
+        'stats.label.i10': 'i10 指数', 'stats.label.works': '发表数',
+        'stats.sub.cit': '所有论文合计', 'stats.sub.h': '近 2 年平均引用',
+        'stats.sub.i10': '被引 ≥ 10 的论文', 'stats.sub.works': '期刊 + 预印本',
+        'now.intro': '本学期我正在关注的方向。',
+        'pubs.intro': '每篇论文附一句话摘要，方便你快速判断是否值得深读。',
+        'blog.intro': '偶尔写一点长文，多数在公众号。',
+        'shelf.intro': '现在在读 & 想读的论文。',
+        'shelf.edit': '（可编辑 — 我每学期更新）',
+        'shelf.now': '📖 正在读', 'shelf.queue': '📚 待读',
+        'btn.email': '发邮件', 'btn.cv': '查看简历', 'btn.zh': 'EN',
+      }
+    };
+    const langBtns = document.querySelectorAll('#langToggle button');
+    const saved = localStorage.getItem('lang') || 'en';
+    function apply(lang) {
+      const dict = I18N[lang] || I18N.en;
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (dict[key] != null) el.textContent = dict[key];
+      });
+      // Special case: status badge — only the inner text, not the pulse dot
+      const badge = document.querySelector('.status-badge span:last-child');
+      if (badge && dict['status.badge']) badge.textContent = dict['status.badge'];
+      const working = document.querySelector('.typed-wrap');
+      if (working && dict['hero.working']) working.textContent = dict['hero.working'];
+    }
+    langBtns.forEach(b => b.addEventListener('click', () => {
+      const l = b.dataset.lang;
+      localStorage.setItem('lang', l);
+      apply(l);
+    }));
+    apply(saved);
   })();
 </script>
 
