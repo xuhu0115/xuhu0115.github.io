@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Background mesh gradient -->
+    <radialGradient id="bg1" cx="0.18" cy="0.30" r="0.5">
+      <stop offset="0%" stop-color="#0d6e6e" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0d6e6e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bg2" cx="0.85" cy="0.80" r="0.5">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bg3" cx="0.55" cy="0.05" r="0.5">
+      <stop offset="0%" stop-color="#14b8a6" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#14b8a6" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Profile ring gradient -->
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d6e6e"/>
+      <stop offset="50%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+
+    <!-- Subtle dot pattern -->
+    <pattern id="dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#0d6e6e" fill-opacity="0.10"/>
+    </pattern>
+
+    <!-- Card shadow -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feOffset in="b" dx="0" dy="6" result="b2"/>
+      <feFlood flood-color="#0d6e6e" flood-opacity="0.18"/>
+      <feComposite in2="b2" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#fafaf7"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect width="1200" height="630" fill="url(#bg1)"/>
+  <rect width="1200" height="630" fill="url(#bg2)"/>
+  <rect width="1200" height="630" fill="url(#bg3)"/>
+
+  <!-- Brand strip -->
+  <g font-family="Inter, system-ui, -apple-system, sans-serif">
+    <text x="60" y="70" font-size="20" font-weight="700" fill="#0d6e6e">Hu Xu<tspan fill="#1a1a1f">.</tspan></text>
+    <text x="60" y="92" font-size="13" fill="#5b5b66" font-weight="500">xuhu0115.github.io</text>
+  </g>
+
+  <!-- Profile photo with gradient ring -->
+  <g transform="translate(900, 315)" filter="url(#shadow)">
+    <circle r="118" fill="url(#ring)"/>
+    <circle r="110" fill="#fafaf7"/>
+    <circle r="100" fill="#e0f0f0"/>
+    <text text-anchor="middle" y="22" font-family="Inter, system-ui, sans-serif" font-size="78" font-weight="800" fill="#0d6e6e">HX</text>
+  </g>
+
+  <!-- Main content -->
+  <g font-family="Inter, system-ui, -apple-system, sans-serif" fill="#1a1a1f">
+    <!-- Status badge -->
+    <g transform="translate(60, 180)">
+      <rect width="280" height="36" rx="18" fill="#ffffff" stroke="#e7e5df"/>
+      <circle cx="22" cy="18" r="5" fill="#10b981"/>
+      <circle cx="22" cy="18" r="5" fill="#10b981" fill-opacity="0.35">
+        <animate attributeName="r" values="5;10;5" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="fill-opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="40" y="24" font-size="14" font-weight="500" fill="#5b5b66">PhD Candidate @ SJTU · 2024 — now</text>
+    </g>
+
+    <!-- Name -->
+    <text x="60" y="290" font-size="78" font-weight="800" letter-spacing="-1.5">Hu Xu <tspan font-size="50" font-weight="600" fill="#5b5b66">徐虎</tspan></text>
+
+    <!-- Tagline -->
+    <text x="60" y="340" font-size="22" font-weight="500" fill="#5b5b66">Making LLMs more <tspan font-style="italic" fill="#0d6e6e">efficient</tspan>, <tspan font-style="italic" fill="#0d6e6e">interpretable</tspan>, and <tspan font-style="italic" fill="#0d6e6e">collaborative</tspan>.</text>
+
+    <!-- Research interest pills -->
+    <g transform="translate(60, 380)">
+      <g><rect width="180" height="34" rx="17" fill="#ffffff" stroke="#e7e5df"/><circle cx="18" cy="17" r="4" fill="#0d6e6e"/><text x="34" y="22" font-size="14" font-weight="500" fill="#1a1a1f">LLM Reasoning</text></g>
+      <g transform="translate(190, 0)"><rect width="160" height="34" rx="17" fill="#ffffff" stroke="#e7e5df"/><circle cx="18" cy="17" r="4" fill="#0d6e6e"/><text x="34" y="22" font-size="14" font-weight="500" fill="#1a1a1f">LLM Pruning</text></g>
+      <g transform="translate(360, 0)"><rect width="170" height="34" rx="17" fill="#ffffff" stroke="#e7e5df"/><circle cx="18" cy="17" r="4" fill="#0d6e6e"/><text x="34" y="22" font-size="14" font-weight="500" fill="#1a1a1f">Multi-Agent</text></g>
+    </g>
+    <g transform="translate(60, 425)">
+      <g><rect width="200" height="34" rx="17" fill="#ffffff" stroke="#e7e5df"/><circle cx="18" cy="17" r="4" fill="#0d6e6e"/><text x="34" y="22" font-size="14" font-weight="500" fill="#1a1a1f">V2X Perception</text></g>
+      <g transform="translate(210, 0)"><rect width="190" height="34" rx="17" fill="#ffffff" stroke="#e7e5df"/><circle cx="18" cy="17" r="4" fill="#0d6e6e"/><text x="34" y="22" font-size="14" font-weight="500" fill="#1a1a1f">Data-Centric AI</text></g>
+    </g>
+
+    <!-- Footer stats -->
+    <g transform="translate(60, 540)">
+      <g><text font-size="13" font-weight="500" fill="#8b8b96" letter-spacing="0.1em">EMNLP 2025 · arXiv 2025 · AAAI 2027 (under review)</text></g>
+      <g transform="translate(0, 32)">
+        <text font-size="13" font-weight="500" fill="#5b5b66">📧 xuhu6736@sjtu.edu.cn</text>
+        <text x="280" font-size="13" font-weight="500" fill="#5b5b66">🐙 github.com/xuhu0115</text>
+        <text x="540" font-size="13" font-weight="500" fill="#5b5b66">🤗 huggingface.co/XuHu6736</text>
+      </g>
+    </g>
+  </g>
+</svg>

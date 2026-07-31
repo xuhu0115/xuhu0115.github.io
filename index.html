@@ -12,6 +12,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
 
   <link rel="icon" href="./Files/favicon.png" />
+
+  <!-- Open Graph / Twitter Card -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Hu Xu (徐虎) — PhD @ SJTU" />
+  <meta property="og:description" content="PhD candidate at Shanghai Jiao Tong University working on LLM reasoning, LLM pruning, multi-agent, and V2X cooperative perception." />
+  <meta property="og:image" content="./og-image.svg" />
+  <meta property="og:url" content="https://xuhu0115.github.io/" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="profile:first_name" content="Hu" />
+  <meta property="profile:last_name" content="Xu" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hu Xu (徐虎) — PhD @ SJTU" />
+  <meta name="twitter:description" content="PhD candidate at SJTU — LLM reasoning, LLM pruning, multi-agent, and V2X perception." />
+  <meta name="twitter:image" content="./og-image.svg" />
+  <meta name="theme-color" content="#0d6e6e" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)" />
   <style>
     /* ----- Reset & Base ----- */
     *, *::before, *::after { box-sizing: border-box; }
@@ -312,6 +328,30 @@
     ::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
     html { scrollbar-color: var(--primary) transparent; scrollbar-width: thin; }
 
+    /* ----- Cursor-following glow on cards (v2.2) ----- */
+    .glow { position: relative; overflow: hidden; }
+    .glow::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(13, 110, 110, 0.13), transparent 50%);
+      opacity: 0; transition: opacity 0.4s ease;
+    }
+    .glow:hover::after { opacity: 1; }
+    [data-theme="dark"] .glow::after {
+      background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(45, 212, 191, 0.16), transparent 50%);
+    }
+    .glow-btn { position: relative; overflow: hidden; }
+    .glow-btn::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(120px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(255, 255, 255, 0.25), transparent 50%);
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .glow-btn:hover::before { opacity: 1; }
+    /* Disable glow on touch / coarse pointers */
+    @media (hover: none) { .glow::after, .glow-btn::before { display: none; } }
+
     /* ----- Animated gradient hero background ----- */
     .hero {
       position: relative; overflow: hidden;
@@ -607,7 +647,7 @@
           I work on making large language models more <em>efficient</em>, <em>interpretable</em>, and <em>collaborative</em> — from data quality and post-training pruning, to multi-agent communication and cooperative perception. Open to research collaboration — feel free to reach out. 😊
         </p>
         <div class="hero-cta">
-          <a class="btn btn-primary" href="mailto:xuhu6736@sjtu.edu.cn">
+          <a class="btn btn-primary glow-btn" href="mailto:xuhu6736@sjtu.edu.cn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l9 6 9-6M3 8v10a2 2 0 002 2h14a2 2 0 002-2V8M3 8l9-5 9 5"/></svg>
             Email Me
           </a>
@@ -679,28 +719,28 @@
       A snapshot of where my attention is going this term. <em>(Updated 2026.08)</em>
     </p>
     <div class="now-grid">
-      <div class="now-card reveal">
+      <div class="now-card reveal glow">
         <div class="now-icon">🎓</div>
         <div class="now-label">PhD @ SJTU</div>
         <div class="now-title">LLM post-training &amp; capability dynamics</div>
         <div class="now-desc">Pushing the SFT dip-recovery story toward a general diagnostic for post-training (advisor: Jianfeng Xu).</div>
         <div class="now-meta">2024.09 → present</div>
       </div>
-      <div class="now-card reveal delay-1">
+      <div class="now-card reveal glow delay-1">
         <div class="now-icon">🏢</div>
         <div class="now-label">Internship</div>
         <div class="now-title">JD (JINGDONG) · Algorithm Research</div>
         <div class="now-desc">Efficient training and learning for LLMs — pruning, calibration, and post-training.</div>
         <div class="now-meta">2025.07 → 2026.03</div>
       </div>
-      <div class="now-card reveal delay-2">
+      <div class="now-card reveal glow delay-2">
         <div class="now-icon">🛠</div>
         <div class="now-label">Open Source</div>
         <div class="now-title">diy-llm (CS336 中文版) · 24k+ ★ LLM cookbook</div>
         <div class="now-desc">Co-leading the Chinese localization of Stanford CS336, plus ongoing LLM-eng tutorials.</div>
         <div class="now-meta">Datawhale community</div>
       </div>
-      <div class="now-card reveal delay-3">
+      <div class="now-card reveal glow delay-3">
         <div class="now-icon">📝</div>
         <div class="now-label">Writing</div>
         <div class="now-title">Revising IGSP for the next venue</div>
@@ -722,14 +762,14 @@
     <!-- Filter tabs -->
     <div class="pub-filters reveal delay-2" id="pubFilters">
       <button class="filter-btn active" data-filter="all">All <span class="count" id="cnt-all">7</span></button>
-      <button class="filter-btn" data-filter="conference">Conferences <span class="count" id="cnt-conference">1</span></button>
-      <button class="filter-btn" data-filter="journal">Journals <span class="count" id="cnt-journal">2</span></button>
-      <button class="filter-btn" data-filter="preprint">Preprints <span class="count" id="cnt-preprint">2</span></button>
-      <button class="filter-btn" data-filter="patent">Patents <span class="count" id="cnt-patent">2</span></button>
+      <button class="filter-btn glow-btn" data-filter="conference">Conferences <span class="count" id="cnt-conference">1</span></button>
+      <button class="filter-btn glow-btn" data-filter="journal">Journals <span class="count" id="cnt-journal">2</span></button>
+      <button class="filter-btn glow-btn" data-filter="preprint">Preprints <span class="count" id="cnt-preprint">2</span></button>
+      <button class="filter-btn glow-btn" data-filter="patent">Patents <span class="count" id="cnt-patent">2</span></button>
     </div>
 
     <!-- Featured spotlight -->
-    <div class="featured reveal" data-type="preprint" id="featuredPub">
+    <div class="featured reveal glow" data-type="preprint" id="featuredPub">
       <div class="star">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.18 21 12 16.51 5.82 21l2.36-7.15L2 9.36h7.61L12 2z"/></svg>
         Featured · latest pre-print
@@ -762,7 +802,7 @@
     <div class="pub-group" data-group="conference">
       <span class="pub-group-label">📚 Conferences &amp; Findings</span>
 
-      <div class="pub reveal" data-type="conference">
+      <div class="pub reveal glow" data-type="conference">
         <div class="pub-head">
           <span class="pub-venue venue-emnlp">EMNLP 2025 Findings</span>
         </div>
@@ -792,7 +832,7 @@
     <div class="pub-group" data-group="journal">
       <span class="pub-group-label">📖 Journals</span>
 
-      <div class="pub reveal" data-type="journal">
+      <div class="pub reveal glow" data-type="journal">
         <div class="pub-head">
           <span class="pub-venue venue-bmc">BMC Bioinformatics 2026</span>
         </div>
@@ -817,7 +857,7 @@
         </div>
       </div>
 
-      <div class="pub reveal" data-type="journal">
+      <div class="pub reveal glow" data-type="journal">
         <div class="pub-head">
           <span class="pub-venue venue-airev">Artificial Intelligence Review 2025</span>
         </div>
@@ -847,7 +887,7 @@
     <div class="pub-group" data-group="preprint">
       <span class="pub-group-label">📝 Preprints</span>
 
-      <div class="pub reveal" data-type="preprint">
+      <div class="pub reveal glow" data-type="preprint">
         <div class="pub-head">
           <span class="pub-venue venue-arxiv">Preprint</span>
         </div>
@@ -872,7 +912,7 @@
     <div class="pub-group" data-group="patent">
       <span class="pub-group-label">🧪 Patents &amp; Software Copyrights</span>
 
-      <div class="pub reveal" data-type="patent">
+      <div class="pub reveal glow" data-type="patent">
         <div class="pub-head">
           <span class="pub-venue venue-patent">Patent · CN 202510471992.4</span>
         </div>
@@ -895,7 +935,7 @@
         </div>
       </div>
 
-      <div class="pub reveal" data-type="patent">
+      <div class="pub reveal glow" data-type="patent">
         <div class="pub-head">
           <span class="pub-venue venue-copyright">Software Copyright · 2025R1150873771</span>
         </div>
@@ -969,22 +1009,22 @@
   <div class="wrap">
     <h2 class="section-title reveal">Open-Source Projects</h2>
     <div class="proj-grid">
-      <div class="proj">
+      <div class="proj glow">
         <div class="proj-name"><a href="https://github.com/datawhalechina/diy-llm" target="_blank" rel="noopener">diy-llm</a></div>
         <div class="proj-desc">Co-led the Chinese localization of Stanford CS336 — Tokenizer, Transformer/MoE, CUDA/Triton, distributed training, scaling laws, SFT/RLHF/GRPO. 6 hands-on assignments.</div>
         <div class="proj-stats">⭐ 500+ · Datawhale · 2025</div>
       </div>
-      <div class="proj">
+      <div class="proj glow">
         <div class="proj-name"><a href="https://github.com/datawhalechina/llm-cookbook" target="_blank" rel="noopener">llm-cookbook</a></div>
         <div class="proj-desc">A Chinese LLM tutorial based on Andrew Ng's courses, covering prompt engineering, RAG, agents and finetuning.</div>
         <div class="proj-stats">⭐ 24,000+ · Datawhale</div>
       </div>
-      <div class="proj">
+      <div class="proj glow">
         <div class="proj-name"><a href="https://github.com/datawhalechina/llm-universe" target="_blank" rel="noopener">llm-universe</a></div>
         <div class="proj-desc">A hands-on LLM application development tutorial — from API calls to deploying a RAG chatbot end-to-end.</div>
         <div class="proj-stats">⭐ 14,000+ · Datawhale</div>
       </div>
-      <div class="proj">
+      <div class="proj glow">
         <div class="proj-name"><a href="https://github.com/xuhu0115" target="_blank" rel="noopener">More on GitHub</a></div>
         <div class="proj-desc">Personal experiments, paper code, and small tools — see the full list on my GitHub profile.</div>
         <div class="proj-stats">→ github.com/xuhu0115</div>
@@ -1072,16 +1112,26 @@
     update();
   })();
 
-  // 2) Dark mode toggle (with localStorage)
+  // 2) Dark mode toggle (localStorage + prefers-color-scheme)
   (function () {
     const root = document.documentElement;
     const btn = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
-    if (saved) root.setAttribute('data-theme', saved);
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    function apply(t) { root.setAttribute('data-theme', t); }
+    if (saved === 'light' || saved === 'dark') {
+      apply(saved);
+    } else {
+      apply(mq.matches ? 'dark' : 'light');
+    }
     btn.addEventListener('click', () => {
       const cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', cur);
+      apply(cur);
       localStorage.setItem('theme', cur);
+    });
+    // Live track OS preference when no manual override
+    mq.addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) apply(e.matches ? 'dark' : 'light');
     });
   })();
 
@@ -1189,6 +1239,19 @@
       btn.classList.toggle('visible', window.scrollY > 500);
     }, { passive: true });
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+
+  // 9) Cursor-following glow on .glow / .glow-btn
+  (function () {
+    if (!window.matchMedia('(hover: hover)').matches) return;
+    const els = document.querySelectorAll('.glow, .glow-btn');
+    els.forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
   })();
 </script>
 
