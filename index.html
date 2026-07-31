@@ -273,16 +273,299 @@
       .pub-tldr { font-size: 14px; }
       .to-top { right: 16px; bottom: 16px; }
     }
+
+    /* ============================================================ */
+    /* ========== v2.1 — Visual Enhancements ====================== */
+    /* ============================================================ */
+
+    /* ----- Reading progress bar ----- */
+    .progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--primary), #14b8a6, #f59e0b);
+      background-size: 200% 100%;
+      z-index: 200;
+      transition: width 0.05s linear;
+      box-shadow: 0 1px 6px rgba(13, 110, 110, 0.35);
+      animation: gradientShift 6s linear infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* ----- Subtle dot-grid background ----- */
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(13, 110, 110, 0.07) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 80%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent 80%);
+    }
+
+    /* ----- Custom scrollbar ----- */
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--primary), #5a9a9a);
+      border-radius: 10px; border: 2px solid var(--bg);
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
+    html { scrollbar-color: var(--primary) transparent; scrollbar-width: thin; }
+
+    /* ----- Animated gradient hero background ----- */
+    .hero {
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: -20%;
+      background:
+        radial-gradient(ellipse 50% 40% at 20% 30%, rgba(13, 110, 110, 0.18), transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(245, 158, 11, 0.12), transparent 60%),
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(13, 110, 110, 0.10), transparent 60%);
+      z-index: -1;
+      animation: heroShift 18s ease-in-out infinite alternate;
+    }
+    @keyframes heroShift {
+      0%   { transform: translate(0, 0) scale(1); }
+      50%  { transform: translate(2%, -2%) scale(1.05); }
+      100% { transform: translate(-2%, 2%) scale(1.02); }
+    }
+    /* Floating orbs */
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(40px);
+      opacity: 0.45; pointer-events: none; z-index: -1;
+    }
+    .orb-1 { width: 260px; height: 260px; top: 20%; left: -80px; background: #0d6e6e; animation: floatA 14s ease-in-out infinite; }
+    .orb-2 { width: 200px; height: 200px; top: 50%; right: -40px; background: #f59e0b; opacity: 0.30; animation: floatB 18s ease-in-out infinite; }
+    .orb-3 { width: 160px; height: 160px; bottom: 0; left: 40%; background: #14b8a6; opacity: 0.25; animation: floatA 22s ease-in-out infinite reverse; }
+    @keyframes floatA { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(30px, -40px); } }
+    @keyframes floatB { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(-40px, 30px); } }
+
+    /* ----- Status badge above hero name ----- */
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 12px; border-radius: 999px;
+      background: var(--bg-elev); border: 1px solid var(--border);
+      font-size: 12.5px; color: var(--text-muted); font-weight: 500;
+      margin-bottom: 14px;
+    }
+    .status-badge .pulse {
+      width: 8px; height: 8px; border-radius: 50%; background: #10b981;
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+      animation: pulse 2s ease-out infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+      70%  { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    /* ----- Animated typing tagline ----- */
+    .typed-wrap { display: inline-block; }
+    .typed {
+      color: var(--text); font-weight: 600;
+      border-right: 2px solid var(--primary);
+      padding-right: 4px;
+      animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink { 50% { border-color: transparent; } }
+
+    /* ----- Profile photo with gradient ring ----- */
+    .hero-photo {
+      position: relative;
+      padding: 4px;
+      background: conic-gradient(from 0deg, #0d6e6e, #14b8a6, #f59e0b, #0d6e6e);
+      animation: ringSpin 12s linear infinite;
+    }
+    .hero-photo img { border-radius: 50%; position: relative; z-index: 1; }
+    .hero-photo::after {
+      content: ''; position: absolute; inset: -2px; border-radius: 50%;
+      background: conic-gradient(from 0deg, transparent 70%, rgba(13, 110, 110, 0.4));
+      animation: ringSpin 12s linear infinite reverse;
+    }
+    @keyframes ringSpin { to { transform: rotate(360deg); } }
+
+    /* ----- Now section ----- */
+    .now-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 8px; }
+    .now-card {
+      position: relative; padding: 18px 18px 16px;
+      border-radius: var(--radius); background: var(--bg-elev);
+      border: 1px solid var(--border);
+      transition: all 0.25s ease;
+      overflow: hidden;
+    }
+    .now-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+      background: var(--primary); transform: scaleY(0); transform-origin: top;
+      transition: transform 0.3s ease;
+    }
+    .now-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .now-card:hover::before { transform: scaleY(1); }
+    .now-icon { font-size: 22px; margin-bottom: 8px; }
+    .now-label { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); font-weight: 600; margin-bottom: 6px; }
+    .now-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .now-desc { font-size: 14px; color: var(--text-muted); line-height: 1.55; }
+    .now-meta { font-size: 12.5px; color: var(--text-faint); margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+
+    /* ----- Featured publication spotlight ----- */
+    .featured {
+      position: relative; padding: 24px 26px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--bg-elev) 0%, #fef9ee 100%);
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--shadow-md);
+      margin-bottom: 28px; overflow: hidden;
+    }
+    .featured::before {
+      content: ''; position: absolute; top: -50%; right: -10%; width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.18), transparent 60%);
+      pointer-events: none;
+    }
+    .featured .star { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #b45309; margin-bottom: 10px; }
+    .featured .star svg { width: 12px; height: 12px; }
+    .featured .pub-title { font-size: 20px; margin-top: 4px; }
+    .featured .pub-tldr { font-size: 15px; }
+
+    /* ----- Filter tabs ----- */
+    .pub-filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 22px; }
+    .filter-btn {
+      padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 500;
+      background: var(--bg-elev); color: var(--text-muted);
+      border: 1px solid var(--border); cursor: pointer; transition: all 0.15s ease;
+    }
+    .filter-btn:hover { color: var(--primary); border-color: var(--primary); }
+    .filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .filter-btn .count {
+      display: inline-block; margin-left: 4px; padding: 0 6px; border-radius: 999px;
+      background: rgba(0,0,0,0.08); font-size: 11px; line-height: 1.5;
+    }
+    .filter-btn.active .count { background: rgba(255,255,255,0.25); }
+    .pub-group.hidden { display: none; }
+    .pub.hidden { display: none; }
+
+    /* ----- Topic tags on each publication ----- */
+    .pub-tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 0 0 6px; }
+    .pub-tag {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.02em;
+      background: var(--bg-soft); color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .pub-tag.t-reasoning { background: #e0f2f1; color: #0d6e6e; border-color: transparent; }
+    .pub-tag.t-pruning   { background: #fbe9e7; color: #bf360c; border-color: transparent; }
+    .pub-tag.t-v2x       { background: #e3f2fd; color: #1565c0; border-color: transparent; }
+    .pub-tag.t-bio       { background: #f3e5f5; color: #6a1b9a; border-color: transparent; }
+    .pub-tag.t-theory    { background: #ede7f6; color: #4527a0; border-color: transparent; }
+
+    /* ----- Section reveal on scroll ----- */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.delay-1 { transition-delay: 0.08s; }
+    .reveal.delay-2 { transition-delay: 0.16s; }
+    .reveal.delay-3 { transition-delay: 0.24s; }
+    .reveal.delay-4 { transition-delay: 0.32s; }
+
+    /* ----- Dark mode toggle ----- */
+    .theme-toggle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--bg-elev); border: 1px solid var(--border);
+      color: var(--text-muted); cursor: pointer; transition: all 0.2s;
+      margin-left: 4px;
+    }
+    .theme-toggle:hover { color: var(--primary); border-color: var(--primary); transform: rotate(15deg); }
+    .theme-toggle svg { width: 16px; height: 16px; }
+    .theme-toggle .sun { display: none; }
+    .theme-toggle .moon { display: block; }
+    [data-theme="dark"] .theme-toggle .sun { display: block; }
+    [data-theme="dark"] .theme-toggle .moon { display: none; }
+
+    /* ----- Hamburger mobile menu ----- */
+    .burger { display: none; background: none; border: none; cursor: pointer; padding: 6px; color: var(--text); }
+    .burger svg { width: 22px; height: 22px; }
+    @media (max-width: 760px) {
+      .burger { display: inline-flex; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0;
+        background: var(--bg-elev); border-bottom: 1px solid var(--border);
+        padding: 8px 18px 12px; box-shadow: var(--shadow-md);
+        max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease;
+      }
+      .nav-links.open { max-height: 400px; padding: 8px 18px 12px; }
+      .nav-links a { width: 100%; padding: 10px 12px; border-radius: var(--radius-sm); }
+      .topnav-inner { position: relative; }
+    }
+
+    /* ============================================================ */
+    /* ========== Dark Mode Palette =============================== */
+    /* ============================================================ */
+    [data-theme="dark"] {
+      --bg: #0e1014;
+      --bg-elev: #161a21;
+      --bg-soft: #1c2029;
+      --text: #e7e9ee;
+      --text-muted: #a0a4ad;
+      --text-faint: #6c7079;
+      --border: #252932;
+      --border-strong: #353a44;
+      --primary: #2dd4bf;
+      --primary-dark: #14b8a6;
+      --primary-soft: #134e4a;
+      --accent: #fb923c;
+      --accent-soft: #4a2a14;
+      --tag-bg: #1c2029;
+      --tag-text: #c7cad1;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.6);
+    }
+    [data-theme="dark"] body::before {
+      background-image: radial-gradient(circle, rgba(45, 212, 191, 0.10) 1px, transparent 1px);
+    }
+    [data-theme="dark"] .featured {
+      background: linear-gradient(135deg, var(--bg-elev) 0%, #2a1f10 100%);
+      border-color: #3a2c1a;
+    }
+    [data-theme="dark"] .pub-tldr { background: rgba(45, 212, 191, 0.08); border-left-color: var(--primary); }
+    [data-theme="dark"] .venue-emnlp  { background: rgba(45, 212, 191, 0.18); color: #5eead4; }
+    [data-theme="dark"] .venue-aaai   { background: rgba(59, 130, 246, 0.18); color: #93c5fd; }
+    [data-theme="dark"] .venue-bmc    { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; }
+    [data-theme="dark"] .venue-airev  { background: rgba(251, 146, 60, 0.18); color: #fdba74; }
+    [data-theme="dark"] .venue-arxiv  { background: rgba(244, 63, 94, 0.18);  color: #fda4af; }
+    [data-theme="dark"] .venue-patent { background: rgba(124, 58, 237, 0.18); color: #c4b5fd; }
+    [data-theme="dark"] .venue-copyright { background: rgba(160, 160, 160, 0.12); color: #bdbdbd; }
+    [data-theme="dark"] .interest-pill { background: var(--bg-soft); border-color: var(--border); }
+    [data-theme="dark"] .btn { background: var(--bg-elev); border-color: var(--border-strong); color: var(--text); }
+    [data-theme="dark"] .btn-primary { background: var(--primary); color: #0e1014; border-color: var(--primary); }
+    [data-theme="dark"] .pub-tag.t-reasoning { background: rgba(45, 212, 191, 0.15); color: #5eead4; }
+    [data-theme="dark"] .pub-tag.t-pruning   { background: rgba(251, 146, 60, 0.15); color: #fdba74; }
+    [data-theme="dark"] .pub-tag.t-v2x       { background: rgba(59, 130, 246, 0.15); color: #93c5fd; }
+    [data-theme="dark"] .pub-tag.t-bio       { background: rgba(168, 85, 247, 0.15); color: #d8b4fe; }
+    [data-theme="dark"] .pub-tag.t-theory    { background: rgba(124, 58, 237, 0.15); color: #c4b5fd; }
+    [data-theme="dark"] .status-badge { background: var(--bg-soft); }
+    [data-theme="dark"] .now-card { background: var(--bg-elev); }
+    [data-theme="dark"] .to-top { box-shadow: 0 6px 18px rgba(0,0,0,0.6); }
+    [data-theme="dark"] .timeline::before { background: var(--border-strong); }
+    [data-theme="dark"] .topnav { background: rgba(14, 16, 20, 0.85); }
+
+    /* Transition for theme change */
+    body, .topnav, .btn, .now-card, .pub, .proj, .featured, .pub-tldr, .pub-tag, .interest-pill {
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
   </style>
 </head>
 <body>
+
+<!-- Reading progress bar -->
+<div class="progress-bar" id="progressBar"></div>
 
 <!-- ============== Top Nav ============== -->
 <nav class="topnav">
   <div class="topnav-inner">
     <div class="brand">Hu Xu<span>.</span></div>
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
+      <a href="#now">Now</a>
       <a href="#publications">Publications</a>
       <a href="#education">Education</a>
       <a href="#experience">Experience</a>
@@ -290,20 +573,37 @@
       <a href="#honors">Honors</a>
       <a href="#talks">Talks</a>
     </div>
+    <div style="display:flex; align-items:center; gap:4px;">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 
 <!-- ============== Hero ============== -->
 <header class="hero">
+  <!-- floating orbs -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <h1 class="hero-name">Hu Xu<span class="cn">徐虎</span></h1>
-        <p class="hero-tagline">
-          PhD Candidate @ <strong>Shanghai Jiao Tong University</strong> ·
-          <strong>NLP, LLM Reasoning, LLM Pruning, Multi-Agent, V2X Perception</strong>
+        <div class="status-badge reveal">
+          <span class="pulse"></span>
+          <span>PhD Candidate @ SJTU · 2024 — present</span>
+        </div>
+        <h1 class="hero-name reveal delay-1">Hu Xu<span class="cn">徐虎</span></h1>
+        <p class="hero-tagline reveal delay-2">
+          <span class="typed-wrap">Working on </span><span class="typed" id="typed"></span>
         </p>
-        <p class="hero-bio">
+        <p class="hero-bio reveal delay-3">
           I work on making large language models more <em>efficient</em>, <em>interpretable</em>, and <em>collaborative</em> — from data quality and post-training pruning, to multi-agent communication and cooperative perception. Open to research collaboration — feel free to reach out. 😊
         </p>
         <div class="hero-cta">
@@ -341,7 +641,7 @@
 <!-- ============== About ============== -->
 <section id="about" class="about">
   <div class="wrap">
-    <h2 class="section-title">About</h2>
+    <h2 class="section-title reveal">About</h2>
     <p>
       I'm a PhD candidate at the <a href="https://www.cs.sjtu.edu.cn/" target="_blank" rel="noopener">School of Computer Science and Engineering</a>,
       Shanghai Jiao Tong University, advised by Prof. <a href="https://zhsf.sjtu.edu.cn/info/1447/6574.htm" target="_blank" rel="noopener">Jianfeng Xu (许建峰)</a>.
@@ -371,21 +671,104 @@
   </div>
 </section>
 
+<!-- ============== Now ============== -->
+<section id="now">
+  <div class="wrap">
+    <h2 class="section-title reveal">What I'm Doing Now</h2>
+    <p style="font-size: 14.5px; color: var(--text-muted); margin: -10px 0 22px;" class="reveal delay-1">
+      A snapshot of where my attention is going this term. <em>(Updated 2026.08)</em>
+    </p>
+    <div class="now-grid">
+      <div class="now-card reveal">
+        <div class="now-icon">🎓</div>
+        <div class="now-label">PhD @ SJTU</div>
+        <div class="now-title">LLM post-training &amp; capability dynamics</div>
+        <div class="now-desc">Pushing the SFT dip-recovery story toward a general diagnostic for post-training (advisor: Jianfeng Xu).</div>
+        <div class="now-meta">2024.09 → present</div>
+      </div>
+      <div class="now-card reveal delay-1">
+        <div class="now-icon">🏢</div>
+        <div class="now-label">Internship</div>
+        <div class="now-title">JD (JINGDONG) · Algorithm Research</div>
+        <div class="now-desc">Efficient training and learning for LLMs — pruning, calibration, and post-training.</div>
+        <div class="now-meta">2025.07 → 2026.03</div>
+      </div>
+      <div class="now-card reveal delay-2">
+        <div class="now-icon">🛠</div>
+        <div class="now-label">Open Source</div>
+        <div class="now-title">diy-llm (CS336 中文版) · 24k+ ★ LLM cookbook</div>
+        <div class="now-desc">Co-leading the Chinese localization of Stanford CS336, plus ongoing LLM-eng tutorials.</div>
+        <div class="now-meta">Datawhale community</div>
+      </div>
+      <div class="now-card reveal delay-3">
+        <div class="now-icon">📝</div>
+        <div class="now-label">Writing</div>
+        <div class="now-title">Revising IGSP for the next venue</div>
+        <div class="now-desc">Reorganizing the capability-balanced multi-source calibration story for a stronger venue (NeurIPS/ICML 2027 track).</div>
+        <div class="now-meta">Target: NeurIPS 2027</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============== Publications (CENTERPIECE) ============== -->
 <section id="publications">
   <div class="wrap">
-    <h2 class="section-title">Publications</h2>
-    <p style="font-size: 14.5px; color: var(--text-muted); margin: -10px 0 22px;">
+    <h2 class="section-title reveal">Publications</h2>
+    <p style="font-size: 14.5px; color: var(--text-muted); margin: -10px 0 18px;" class="reveal delay-1">
       Each paper below is paired with a one-sentence summary so you can decide what's worth a deeper read.
     </p>
 
+    <!-- Filter tabs -->
+    <div class="pub-filters reveal delay-2" id="pubFilters">
+      <button class="filter-btn active" data-filter="all">All <span class="count" id="cnt-all">7</span></button>
+      <button class="filter-btn" data-filter="conference">Conferences <span class="count" id="cnt-conference">1</span></button>
+      <button class="filter-btn" data-filter="journal">Journals <span class="count" id="cnt-journal">2</span></button>
+      <button class="filter-btn" data-filter="preprint">Preprints <span class="count" id="cnt-preprint">2</span></button>
+      <button class="filter-btn" data-filter="patent">Patents <span class="count" id="cnt-patent">2</span></button>
+    </div>
+
+    <!-- Featured spotlight -->
+    <div class="featured reveal" data-type="preprint" id="featuredPub">
+      <div class="star">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.18 21 12 16.51 5.82 21l2.36-7.15L2 9.36h7.61L12 2z"/></svg>
+        Featured · latest pre-print
+      </div>
+      <div class="pub-head"><span class="pub-venue venue-arxiv">arXiv 2025</span></div>
+      <div class="pub-tags">
+        <span class="pub-tag t-pruning">LLM Pruning</span>
+        <span class="pub-tag t-pruning">Calibration</span>
+      </div>
+      <h3 class="pub-title">
+        <a href="https://arxiv.org/abs/2606.03328" target="_blank" rel="noopener">
+          Averaged Evaluation Masks Capability Trade-Offs: Multi-Source Calibration for High-Sparsity LLM Pruning
+        </a>
+      </h3>
+      <div class="pub-authors"><b>Hu Xu</b>, Zhaolong Xing, Congcong Liu, Jiaxing Wang, Zhida Jiang, Junshi Huang, Zhen Chen, Jianfeng Xu</div>
+      <div class="pub-tldr">
+        <span class="icon">💡</span>
+        <span class="text">
+          We show that <b>averaged evaluation hides 50+ point capability trade-offs</b> in LLM-pruning calibration, and propose <b>IGSP</b> — a self-generated, capability-stratified multi-source calibration that closes <b>49%</b> of the gap to real multi-source data <b>without any pretraining-corpus access</b>.
+        </span>
+      </div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2606.03328" target="_blank" rel="noopener">📄 arXiv</a>
+        <a href="./reference/2606.03328v3.pdf" target="_blank" rel="noopener">📎 PDF</a>
+      </div>
+    </div>
+
+
     <!-- ============= Conferences ============= -->
-    <div class="pub-group">
+    <div class="pub-group" data-group="conference">
       <span class="pub-group-label">📚 Conferences &amp; Findings</span>
 
-      <div class="pub">
+      <div class="pub reveal" data-type="conference">
         <div class="pub-head">
           <span class="pub-venue venue-emnlp">EMNLP 2025 Findings</span>
+        </div>
+        <div class="pub-tags">
+          <span class="pub-tag t-reasoning">LLM Reasoning</span>
+          <span class="pub-tag t-reasoning">Data Quality</span>
         </div>
         <h3 class="pub-title">
           <a href="https://aclanthology.org/2025.findings-emnlp.616/" target="_blank" rel="noopener">
@@ -406,12 +789,16 @@
     </div>
 
     <!-- ============= Journals ============= -->
-    <div class="pub-group">
+    <div class="pub-group" data-group="journal">
       <span class="pub-group-label">📖 Journals</span>
 
-      <div class="pub">
+      <div class="pub reveal" data-type="journal">
         <div class="pub-head">
           <span class="pub-venue venue-bmc">BMC Bioinformatics 2026</span>
+        </div>
+        <div class="pub-tags">
+          <span class="pub-tag t-bio">Bioinformatics</span>
+          <span class="pub-tag t-bio">MHC-I</span>
         </div>
         <h3 class="pub-title">
           <a href="https://doi.org/10.1186/s12859-026-06423-1" target="_blank" rel="noopener">
@@ -430,9 +817,13 @@
         </div>
       </div>
 
-      <div class="pub">
+      <div class="pub reveal" data-type="journal">
         <div class="pub-head">
           <span class="pub-venue venue-airev">Artificial Intelligence Review 2025</span>
+        </div>
+        <div class="pub-tags">
+          <span class="pub-tag t-theory">Theory</span>
+          <span class="pub-tag t-theory">Information Metrics</span>
         </div>
         <h3 class="pub-title">
           <a href="https://doi.org/10.1007/s10462-025-11281-z" target="_blank" rel="noopener">
@@ -453,34 +844,16 @@
     </div>
 
     <!-- ============= Preprints ============= -->
-    <div class="pub-group">
+    <div class="pub-group" data-group="preprint">
       <span class="pub-group-label">📝 Preprints</span>
 
-      <div class="pub">
-        <div class="pub-head">
-          <span class="pub-venue venue-arxiv">arXiv 2025</span>
-        </div>
-        <h3 class="pub-title">
-          <a href="https://arxiv.org/abs/2606.03328" target="_blank" rel="noopener">
-            Averaged Evaluation Masks Capability Trade-Offs: Multi-Source Calibration for High-Sparsity LLM Pruning
-          </a>
-        </h3>
-        <div class="pub-authors"><b>Hu Xu</b>, Zhaolong Xing, Congcong Liu, Jiaxing Wang, Zhida Jiang, Junshi Huang, Zhen Chen, Jianfeng Xu</div>
-        <div class="pub-tldr">
-          <span class="icon">💡</span>
-          <span class="text">
-            We show that <b>averaged evaluation hides 50+ point capability trade-offs</b> in LLM-pruning calibration, and propose <b>IGSP</b> — a self-generated, capability-stratified multi-source calibration that closes <b>49%</b> of the gap to real multi-source data <b>without any pretraining-corpus access</b>.
-          </span>
-        </div>
-        <div class="pub-links">
-          <a href="https://arxiv.org/abs/2606.03328" target="_blank" rel="noopener">📄 arXiv</a>
-          <a href="./reference/2606.03328v3.pdf" target="_blank" rel="noopener">📎 PDF</a>
-        </div>
-      </div>
-
-      <div class="pub">
+      <div class="pub reveal" data-type="preprint">
         <div class="pub-head">
           <span class="pub-venue venue-arxiv">Preprint</span>
+        </div>
+        <div class="pub-tags">
+          <span class="pub-tag t-v2x">V2X</span>
+          <span class="pub-tag t-v2x">Cooperative Perception</span>
         </div>
         <h3 class="pub-title">
           SemRD-V2X: Closure-Guided Communication with Bounded Inference for Cooperative Perception
@@ -496,12 +869,16 @@
     </div>
 
     <!-- ============= Patents & Copyright ============= -->
-    <div class="pub-group">
+    <div class="pub-group" data-group="patent">
       <span class="pub-group-label">🧪 Patents &amp; Software Copyrights</span>
 
-      <div class="pub">
+      <div class="pub reveal" data-type="patent">
         <div class="pub-head">
           <span class="pub-venue venue-patent">Patent · CN 202510471992.4</span>
+        </div>
+        <div class="pub-tags">
+          <span class="pub-tag t-bio">Bioinformatics</span>
+          <span class="pub-tag t-bio">Patent</span>
         </div>
         <h3 class="pub-title">
           Method for Predicting Peptide and MHC-I Molecule Binding Based on Transformer
@@ -518,9 +895,13 @@
         </div>
       </div>
 
-      <div class="pub">
+      <div class="pub reveal" data-type="patent">
         <div class="pub-head">
           <span class="pub-venue venue-copyright">Software Copyright · 2025R1150873771</span>
+        </div>
+        <div class="pub-tags">
+          <span class="pub-tag t-bio">Bioinformatics</span>
+          <span class="pub-tag t-bio">Software</span>
         </div>
         <h3 class="pub-title">MHC-1 (V1.0) — Computer Software</h3>
         <div class="pub-authors">Chongqing University, <b>Hu Xu</b></div>
@@ -538,7 +919,7 @@
 <!-- ============== Education ============== -->
 <section id="education">
   <div class="wrap">
-    <h2 class="section-title">Education</h2>
+    <h2 class="section-title reveal">Education</h2>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-head">Ph.D. Candidate in Computer Science and Engineering</div>
@@ -562,7 +943,7 @@
 <!-- ============== Experience ============== -->
 <section id="experience">
   <div class="wrap">
-    <h2 class="section-title">Experience</h2>
+    <h2 class="section-title reveal">Experience</h2>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-head">Algorithm Intern (Research) · <a href="https://www.jd.com/" target="_blank" rel="noopener">JD (JINGDONG)</a></div>
@@ -586,7 +967,7 @@
 <!-- ============== Projects ============== -->
 <section id="projects">
   <div class="wrap">
-    <h2 class="section-title">Open-Source Projects</h2>
+    <h2 class="section-title reveal">Open-Source Projects</h2>
     <div class="proj-grid">
       <div class="proj">
         <div class="proj-name"><a href="https://github.com/datawhalechina/diy-llm" target="_blank" rel="noopener">diy-llm</a></div>
@@ -615,7 +996,7 @@
 <!-- ============== Honors ============== -->
 <section id="honors">
   <div class="wrap">
-    <h2 class="section-title">Selected Honors &amp; Awards</h2>
+    <h2 class="section-title reveal">Selected Honors &amp; Awards</h2>
     <ul class="list">
       <li><b>2025</b> · Second Prize, Shanghai Jiao Tong University Student Summer Social Practice ("Research on Digital Justice Practice in Court Trials Empowered by Smart Justice", KoGuan Law School Team).</li>
       <li><b>2023</b> · Innovation Award, iFLYTEK "Spark Cup" Cognitive LLM Innovation Competition (Project: "Chat Health Assistant", TOP 50).</li>
@@ -636,7 +1017,7 @@
 <!-- ============== Talks & Activities ============== -->
 <section id="talks">
   <div class="wrap">
-    <h2 class="section-title">Talks, Services &amp; Activities</h2>
+    <h2 class="section-title reveal">Talks, Services &amp; Activities</h2>
     <h3 style="margin-top: 0;">Invited Talks</h3>
     <ul class="list">
       <li><b>2024.07.24</b> · Datawhale AI Summer Camp Session 2 — Getting Started with AI Competitions (NLP Track): Baseline Interpretation &amp; Advanced Sharing. <a href="https://www.bilibili.com/video/BV1AU411S71h" target="_blank" rel="noopener">Bilibili</a></li>
@@ -673,7 +1054,119 @@
 </button>
 
 <script>
-  // Smooth scroll-spy: highlight current section in nav
+  // ============================================================
+  // v2.1 — Enhanced interactions
+  // ============================================================
+
+  // 1) Reading progress bar
+  (function () {
+    const bar = document.getElementById('progressBar');
+    function update() {
+      const h = document.documentElement;
+      const scrolled = h.scrollTop || document.body.scrollTop;
+      const height = h.scrollHeight - h.clientHeight;
+      bar.style.width = height > 0 ? (scrolled / height * 100) + '%' : '0%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  // 2) Dark mode toggle (with localStorage)
+  (function () {
+    const root = document.documentElement;
+    const btn = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('theme');
+    if (saved) root.setAttribute('data-theme', saved);
+    btn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', cur);
+      localStorage.setItem('theme', cur);
+    });
+  })();
+
+  // 3) Mobile burger menu
+  (function () {
+    const btn = document.getElementById('burger');
+    const nav = document.getElementById('navLinks');
+    btn.addEventListener('click', () => nav.classList.toggle('open'));
+    nav.addEventListener('click', e => {
+      if (e.target.tagName === 'A') nav.classList.remove('open');
+    });
+  })();
+
+  // 4) Typing animation
+  (function () {
+    const el = document.getElementById('typed');
+    const phrases = [
+      'LLM reasoning data quality',
+      'capability-balanced LLM pruning',
+      'V2X cooperative perception',
+      'multi-agent communication',
+      'post-training diagnostics',
+    ];
+    let pi = 0, ci = 0, deleting = false;
+    function tick() {
+      const p = phrases[pi];
+      el.textContent = p.slice(0, ci);
+      if (!deleting) {
+        ci++;
+        if (ci > p.length) { deleting = true; setTimeout(tick, 1500); return; }
+      } else {
+        ci--;
+        if (ci < 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(tick, 200); return; }
+      }
+      setTimeout(tick, deleting ? 30 : 70);
+    }
+    tick();
+  })();
+
+  // 5) Scroll reveal (IntersectionObserver)
+  (function () {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(e => e.classList.add('in'));
+      return;
+    }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    els.forEach(e => obs.observe(e));
+  })();
+
+  // 6) Publication filter
+  (function () {
+    const btns = document.querySelectorAll('#pubFilters .filter-btn');
+    const pubs = document.querySelectorAll('.pub, .featured');
+    const groups = document.querySelectorAll('.pub-group');
+    function apply(filter) {
+      btns.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+      // For each publication, decide if visible
+      pubs.forEach(p => {
+        const type = p.dataset.type;
+        const visible = filter === 'all' || type === filter;
+        p.classList.toggle('hidden', !visible);
+      });
+      // Hide empty groups
+      groups.forEach(g => {
+        const groupType = g.dataset.group;
+        let anyVisible = false;
+        g.querySelectorAll('.pub').forEach(p => {
+          if (!p.classList.contains('hidden')) anyVisible = true;
+        });
+        g.classList.toggle('hidden', !anyVisible);
+      });
+      // Featured: hide if filter doesn't match
+      const featured = document.getElementById('featuredPub');
+      if (featured) {
+        const fType = featured.dataset.type;
+        featured.classList.toggle('hidden', !(filter === 'all' || fType === filter));
+      }
+    }
+    btns.forEach(b => b.addEventListener('click', () => apply(b.dataset.filter)));
+  })();
+
+  // 7) Smooth scroll-spy (active nav link)
   (function () {
     const links = document.querySelectorAll('.nav-links a');
     const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
@@ -689,7 +1182,7 @@
     onScroll();
   })();
 
-  // Back-to-top button
+  // 8) Back-to-top button
   (function () {
     const btn = document.getElementById('toTop');
     window.addEventListener('scroll', () => {
