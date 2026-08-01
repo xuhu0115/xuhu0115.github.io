@@ -234,15 +234,39 @@
     /* ----- Projects (card grid) ----- */
     .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
     .proj {
-      padding: 20px; border-radius: var(--radius); background: var(--bg-elev);
+      position: relative; padding: 20px; border-radius: var(--radius); background: var(--bg-elev);
       border: 1px solid var(--border); transition: all 0.2s;
     }
+    .proj::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      border-radius: var(--radius) var(--radius) 0 0;
+      opacity: 0.6;
+    }
     .proj:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-    .proj-name { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+    .proj-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .proj-name { font-size: 16px; font-weight: 700; color: var(--text); }
     .proj-name a { color: var(--text); }
     .proj-name a:hover { color: var(--primary); text-decoration: none; }
-    .proj-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 10px; }
-    .proj-stats { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; }
+    .proj-role {
+      display: inline-block; padding: 2px 8px; border-radius: 4px;
+      font-size: 10.5px; font-weight: 600; letter-spacing: 0.02em;
+      background: var(--primary-soft); color: var(--primary-dark);
+      white-space: nowrap;
+    }
+    .proj-role.role-contrib { background: var(--bg-soft); color: var(--text-muted); }
+    [data-theme="dark"] .proj-role.role-contrib { background: var(--bg-soft); color: var(--text-muted); }
+    .proj-desc { font-size: 13.5px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.55; }
+    .proj-desc b { color: var(--text); font-weight: 600; }
+    .proj-topics { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px; }
+    .proj-topic {
+      display: inline-block; padding: 2px 7px; border-radius: 4px;
+      font-size: 10.5px; font-weight: 500; letter-spacing: 0.02em;
+      background: var(--bg-soft); color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .proj-stats { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--text-faint); font-family: 'JetBrains Mono', monospace; flex-wrap: wrap; }
+    .proj-stats b { color: var(--text); font-weight: 600; }
 
     /* ----- Lists (Honors, Talks, Services) ----- */
     .list { list-style: none; padding: 0; margin: 0; }
@@ -1205,23 +1229,62 @@
     <h2 class="section-title reveal" data-i18n="section.proj">Open-Source Projects</h2>
     <div class="proj-grid">
       <div class="proj glow">
-        <div class="proj-name"><a href="https://github.com/datawhalechina/diy-llm" target="_blank" rel="noopener">diy-llm</a></div>
-        <div class="proj-desc">Co-led the Chinese localization of Stanford CS336 — Tokenizer, Transformer/MoE, CUDA/Triton, distributed training, scaling laws, SFT/RLHF/GRPO. 6 hands-on assignments.</div>
-        <div class="proj-stats">⭐ 500+ · Datawhale · 2025</div>
+        <div class="proj-head">
+          <div class="proj-name"><a href="https://github.com/datawhalechina/diy-llm" target="_blank" rel="noopener">diy-llm</a></div>
+          <span class="proj-role">项目负责人</span>
+        </div>
+        <div class="proj-desc">
+          <b>系统性中文 LLM 全栈构建课程</b> — 完整复现 Stanford CS336 全部 <b>15 章</b> + <b>6 个渐进式作业</b>，从 Tokenizer 手写、Transformer / MoE 架构、CUDA / Triton GPU 编程、分布式训练 (FSDP / ZeRO)、Scaling Laws、推理优化一路到对齐 (SFT / DPO / GRPO)。不只是汉化：补充中文学习者所需的数学 / 工程前置，案例更贴近 <b>Qwen / DeepSeek</b> 等国产开源生态。
+        </div>
+        <div class="proj-topics">
+          <span class="proj-topic">LLM</span>
+          <span class="proj-topic">Transformer / MoE</span>
+          <span class="proj-topic">CUDA / Triton</span>
+          <span class="proj-topic">Distributed</span>
+          <span class="proj-topic">SFT / RLHF / GRPO</span>
+        </div>
+        <div class="proj-stats">⭐ <b>1,100+</b> · 🔀 <b>116</b> · Datawhale · 2024—now</div>
       </div>
+
       <div class="proj glow">
-        <div class="proj-name"><a href="https://github.com/datawhalechina/llm-cookbook" target="_blank" rel="noopener">llm-cookbook</a></div>
-        <div class="proj-desc">A Chinese LLM tutorial based on Andrew Ng's courses, covering prompt engineering, RAG, agents and finetuning.</div>
-        <div class="proj-stats">⭐ 24,000+ · Datawhale</div>
+        <div class="proj-head">
+          <div class="proj-name"><a href="https://github.com/datawhalechina/llm-cookbook" target="_blank" rel="noopener">llm-cookbook</a></div>
+          <span class="proj-role role-contrib">核心贡献者</span>
+        </div>
+        <div class="proj-desc">
+          <b>国内最受欢迎的中文 LLM 入门教程</b> — 完整翻译复现吴恩达 × OpenAI <b>11 门</b>大模型系列课程（<b>4 门必修 + 7 门选修</b>），覆盖 Prompt Engineering、LangChain、RAG、模型微调、Gradio / wandb 评估。配套中英双语字幕、在线阅读站点与离线 PDF，<b>国内流畅访问</b>。
+        </div>
+        <div class="proj-topics">
+          <span class="proj-topic">Prompt</span>
+          <span class="proj-topic">RAG</span>
+          <span class="proj-topic">LangChain</span>
+          <span class="proj-topic">Fine-tuning</span>
+        </div>
+        <div class="proj-stats">⭐ <b>24,400+</b> · 🔀 <b>2,900+</b> · Datawhale</div>
       </div>
+
       <div class="proj glow">
-        <div class="proj-name"><a href="https://github.com/datawhalechina/llm-universe" target="_blank" rel="noopener">llm-universe</a></div>
-        <div class="proj-desc">A hands-on LLM application development tutorial — from API calls to deploying a RAG chatbot end-to-end.</div>
-        <div class="proj-stats">⭐ 14,000+ · Datawhale</div>
+        <div class="proj-head">
+          <div class="proj-name"><a href="https://github.com/datawhalechina/llm-universe" target="_blank" rel="noopener">llm-universe</a></div>
+          <span class="proj-role role-contrib">核心贡献者</span>
+        </div>
+        <div class="proj-desc">
+          <b>面向小白开发者的大模型应用实战</b> — 一门课从零搭建个人知识库助手。覆盖 <b>LLM API 统一封装</b>（百度文心 / 讯飞星火 / 智谱）、向量数据库、检索问答链、<b>Streamlit 部署</b>、迭代评估。第三部分收录真实开源案例解析。阿里云学生机即可完成，<b>无 GPU 要求</b>。
+        </div>
+        <div class="proj-topics">
+          <span class="proj-topic">LLM Apps</span>
+          <span class="proj-topic">RAG</span>
+          <span class="proj-topic">LangChain</span>
+          <span class="proj-topic">Streamlit</span>
+        </div>
+        <div class="proj-stats">⭐ <b>13,600+</b> · 🔀 <b>1,380+</b> · Datawhale</div>
       </div>
+
       <div class="proj glow">
-        <div class="proj-name"><a href="https://github.com/xuhu0115" target="_blank" rel="noopener">More on GitHub</a></div>
-        <div class="proj-desc">Personal experiments, paper code, and small tools — see the full list on my GitHub profile.</div>
+        <div class="proj-head">
+          <div class="proj-name"><a href="https://github.com/xuhu0115" target="_blank" rel="noopener">More on GitHub</a></div>
+        </div>
+        <div class="proj-desc">个人实验、论文代码、IGSP pruning 复现、SemRD-V2X 预印本配套代码等 — 完整列表见 GitHub profile。</div>
         <div class="proj-stats">→ github.com/xuhu0115</div>
       </div>
     </div>
