@@ -1682,11 +1682,11 @@
       });
       // Dynamic hrefs for CV + language switcher
       // - EN: data-cv -> ./resume.html (the v1 English resume, the real EN CV)
-      // - zh: data-cv -> ./Chinese/index.html (the v1 Chinese resume, the real zh CV)
+      // - zh: data-cv -> ./xuhu_CV_zh.pdf (the print-ready Chinese CV PDF)
       // - lang toggle: zh mode -> back to ./ for the EN version
       const cvLink = document.querySelector('[data-cv]');
       const langLink = document.querySelector('[data-lang-link]');
-      if (cvLink) cvLink.setAttribute('href', lang === 'zh' ? './Chinese/index.html' : './resume.html');
+      if (cvLink) cvLink.setAttribute('href', lang === 'zh' ? './xuhu_CV_zh.pdf' : './resume.html');
       if (langLink) langLink.setAttribute('href', lang === 'zh' ? './index.html' : './Chinese/index.html');
       // Special case: status badge — only the inner text, not the pulse dot
       const badge = document.querySelector('.status-badge span:last-child');
