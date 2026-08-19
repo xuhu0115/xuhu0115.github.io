@@ -200,6 +200,13 @@
     .pub-title a:hover { color: var(--primary); }
     .pub-authors { font-size: 14.5px; color: var(--text-muted); margin-bottom: 8px; }
     .pub-authors b { color: var(--text); font-weight: 600; }
+    .first-author {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      padding: 1px 6px; margin-right: 4px; border-radius: 4px;
+      background: var(--primary-soft); color: var(--primary-dark);
+      vertical-align: 1px; letter-spacing: 0.02em;
+    }
+    [data-theme="dark"] .first-author { background: var(--primary-soft); color: var(--primary); }
     .pub-tldr {
       display: flex; gap: 10px; align-items: flex-start;
       background: var(--bg-soft); border-left: 3px solid var(--primary);
@@ -1003,7 +1010,7 @@
           Averaged Evaluation Masks Capability Trade-Offs: Multi-Source Calibration for High-Sparsity LLM Pruning
         </a>
       </h3>
-      <div class="pub-authors"><b>Hu Xu</b>, Zhaolong Xing, Congcong Liu, Jiaxing Wang, Zhida Jiang, Junshi Huang, Zhen Chen, Jianfeng Xu</div>
+      <div class="pub-authors"><span class="first-author">[一作]</span> <b>Hu Xu</b>, Zhaolong Xing, Congcong Liu, Jiaxing Wang, Zhida Jiang, Junshi Huang, Zhen Chen, Jianfeng Xu</div>
       <div class="pub-tldr">
         <span class="icon">💡</span>
         <span class="text" data-i18n="tldr.igsp">
@@ -1034,7 +1041,7 @@
             Structure Trumps Size: Rethinking Data Quality for LLM Reasoning
           </a>
         </h3>
-        <div class="pub-authors"><b>Hu Xu</b>, Zeyan Li, Rui Wang, Jianfeng Xu</div>
+        <div class="pub-authors"><span class="first-author">[一作]</span> <b>Hu Xu</b>, Zeyan Li, Rui Wang, Jianfeng Xu</div>
         <div class="pub-tldr">
           <span class="icon">💡</span>
           <span class="text" data-i18n="tldr.emnlp">
@@ -1064,7 +1071,7 @@
             TransBindpMHCI: A Transformer-based Model for Pan-specific MHC-I Peptide Binding Prediction
           </a>
         </h3>
-        <div class="pub-authors"><b>Hu Xu</b>, Yuanli Ni, Zixuan Chai, Xuan Cui, Xia Lei, Limei Liu, Juanjuan Shan, Cheng Qian</div>
+        <div class="pub-authors"><span class="first-author">[一作]</span> <b>Hu Xu</b>, Yuanli Ni, Zixuan Chai, Xuan Cui, Xia Lei, Limei Liu, Juanjuan Shan, Cheng Qian</div>
         <div class="pub-tldr">
           <span class="icon">💡</span>
           <span class="text" data-i18n="tldr.bmc">
@@ -1117,7 +1124,7 @@
         <h3 class="pub-title">
           SemRD-V2X: Closure-Guided Communication with Bounded Inference for Cooperative Perception
         </h3>
-        <div class="pub-authors"><b>Hu Xu</b>, Chun Li, Siyuan Qiu, Zeyan Li, Jianfeng Xu</div>
+        <div class="pub-authors"><span class="first-author">[一作]</span> <b>Hu Xu</b>, Chun Li, Siyuan Qiu, Zeyan Li, Jianfeng Xu</div>
         <div class="pub-tldr">
           <span class="icon">💡</span>
           <span class="text" data-i18n="tldr.semrd">
@@ -1207,7 +1214,7 @@
       <div class="tl-item">
         <div class="tl-head">Algorithm Intern (Research) · <a href="https://www.jd.com/" target="_blank" rel="noopener">JD (JINGDONG)</a></div>
         <div class="tl-meta">2025.07 — 2026.03 · Beijing</div>
-        <div class="tl-desc" data-i18n="exp.desc.jd">负责大语言模型的高效训练与学习，参与大模型的后训练，通过 SFT/GRPO 等方法提升大模型的数学推理能力。</div>
+        <div class="tl-desc" data-i18n="exp.desc.jd">负责大模型后训练（Post-training），通过 SFT + GRPO 对齐流程提升模型数学推理能力；完成一作论文《Averaged Evaluation Masks Capability Trade-Offs》（IGSP 剪枝校准，审稿中）；参与 FlowTrain 项目（工业级视觉-语言模型的流式解耦训练）。</div>
       </div>
       <div class="tl-item">
         <div class="tl-head">Algorithm Engineer Intern · <a href="https://chuangxin.com/" target="_blank" rel="noopener">Sinovation Ventures &amp; Syneron</a></div>
@@ -1433,8 +1440,7 @@
       <li><b>2019</b> · 1st Prize (Shaanxi Province), National College Mathematical Contest in Modeling.</li>
       <li><b>2019</b> · Merit Award, Linux Red Hat Challenge Cup (Shaanxi Division).</li>
       <li><b>2018</b> · 2nd Prize (Shaanxi Province), National College Mathematical Contest in Modeling.</li>
-      <li><b>2018–2020</b> · National Encouragement Scholarship (3×), Xi'an Jiaotong University City College (Top 2%, 5/266, 4/266, 5/266).</li>
-      <li><b>2018–2020</b> · College First-class Scholarship (3×), Xi'an Jiaotong University City College.</li>
+      <li><b>2018–2020</b> · National Encouragement Scholarship (3×) + College First-class Scholarship (3×), Xi'an Jiaotong University City College (Top 2%, 5/266, 4/266, 5/266).</li>
     </ul>
   </div>
 </section>
@@ -1767,7 +1773,7 @@
         'edu.desc.me': 'Chongqing University',
         'edu.title.be': 'B.E. in Computer Science and Technology',
         'edu.desc.be': 'Xi’an Jiaotong University City College',
-        'exp.desc.jd': 'Efficient training and learning for LLM, specializing in LLM post-training — improving mathematical reasoning through SFT / GRPO.',
+        'exp.desc.jd': 'Led LLM post-training, improving mathematical reasoning via SFT + GRPO alignment; authored the first-author paper "Averaged Evaluation Masks Capability Trade-Offs" (IGSP pruning calibration, under review); contributed to FlowTrain (flow-based decoupled training for industrial vision-language models).',
         'exp.desc.sinovation': 'Pre-training of large language models for proteins / peptides.',
         'exp.desc.datawhale': 'Applied machine learning, deep learning, and large-model algorithms to real-world applications.',
         // v2.17 — TLDR (EN fallback: restore original English when toggling back)
@@ -1843,7 +1849,7 @@
         'edu.desc.me': '重庆大学 · 生物工程学院+医学院联合培养 · 医工交叉方向',
         'edu.title.be': '工学学士 · 计算机科学与技术',
         'edu.desc.be': '西安交通大学城市学院',
-        'exp.desc.jd': '负责大语言模型的高效训练与学习，参与大模型的后训练，通过 SFT/GRPO 等方法提升大模型的数学推理能力。',
+        'exp.desc.jd': '负责大模型后训练（Post-training），通过 SFT + GRPO 对齐流程提升模型数学推理能力；完成一作论文《Averaged Evaluation Masks Capability Trade-Offs》（IGSP 剪枝校准，审稿中）；参与 FlowTrain 项目（工业级视觉-语言模型的流式解耦训练）。',
         'exp.desc.sinovation': '面向蛋白质 / 多肽的大语言模型预训练。',
         'exp.desc.datawhale': '将机器学习、深度学习及大模型算法应用于实际场景。',
         // v2.17 — paper TL;DRs (ZH only)
