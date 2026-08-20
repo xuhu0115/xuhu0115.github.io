@@ -903,8 +903,8 @@
     <p data-i18n="about.bio1">
       I'm a PhD candidate at the <a href="https://www.cs.sjtu.edu.cn/" target="_blank" rel="noopener">School of Computer Science and Engineering</a>,
       Shanghai Jiao Tong University, advised by Prof. <a href="https://zhsf.sjtu.edu.cn/info/1447/6574.htm" target="_blank" rel="noopener">Jianfeng Xu (许建峰)</a>.
-      I work at the intersection of <strong>LLM post-training</strong>, <strong>efficient inference</strong>, and <strong>multi-agent systems</strong> — with recent
-      threads on <em>data-quality diagnostics for reasoning</em>, <em>capability-balanced pruning</em>, and <em>communication-efficient cooperative perception</em>.
+      My research focuses on <strong>natural language processing</strong>, <strong>LLM post-training (SFT / RL / OPD)</strong>, and <strong>LLM-based agents</strong>.
+      I have hands-on experience with agentic-RL methods including GRPO, OPD, OPSD, GSPO, DAPO, Search-R1, ReTool, ALFWorld, Vision GRPO, and Slime.
     </p>
     <p data-i18n="about.bio2">
       Beyond research, I'm an active open-source contributor to the Datawhale community. My repositories
@@ -919,20 +919,6 @@
       <span class="interest-pill"><span class="dot"></span><span data-i18n="interest.1">Natural Language Processing</span></span>
       <span class="interest-pill"><span class="dot"></span><span data-i18n="interest.2">LLM Post-training (SFT / RL / OPD)</span></span>
       <span class="interest-pill"><span class="dot"></span><span data-i18n="interest.3">LLM-based Agents</span></span>
-    </div>
-
-    <h3 data-i18n="about.skills" style="margin-top:18px;">Agentic-RL Skills</h3>
-    <div class="interests">
-      <span class="interest-pill"><span class="dot"></span>GRPO</span>
-      <span class="interest-pill"><span class="dot"></span>OPD</span>
-      <span class="interest-pill"><span class="dot"></span>OPSD</span>
-      <span class="interest-pill"><span class="dot"></span>GSPO</span>
-      <span class="interest-pill"><span class="dot"></span>DAPO</span>
-      <span class="interest-pill"><span class="dot"></span>Search-R1</span>
-      <span class="interest-pill"><span class="dot"></span>ReTool</span>
-      <span class="interest-pill"><span class="dot"></span>ALFWorld</span>
-      <span class="interest-pill"><span class="dot"></span>Vision GRPO</span>
-      <span class="interest-pill"><span class="dot"></span>Slime</span>
     </div>
 
     <p style="margin-top:18px; font-size: 14.5px;">
@@ -1140,7 +1126,7 @@
         <div class="pub-tldr">
           <span class="icon">💡</span>
           <span class="text" data-i18n="tldr.semrd">
-            We give V2X cooperative perception a source-coding <b>closure-fidelity</b> formulation — the first deductive-abstraction treatment of rate-distortion under ego-conditioned remote perception — and instantiate it as <b>SemRD-V2X</b> (BEV-importance scoring + pointwise compression + shared reconstruction), cutting the analytical feature payload by <b>26.6×</b> while lifting mean AP by <b>+0.5 / +0.7</b> at 4.13 / 8.57 points over a local V2X-ViT baseline, at only <b>+3.81%</b> compute latency.
+            Introduces a <b>closure-fidelity</b> perspective answering a more fundamental question than "how to compress": <b>which remote evidence is truly indispensable</b> when the ego vehicle can infer the rest locally? <b>SemRD-V2X</b> operationalizes the derived principle (transmit compact evidence, recover derivable context) via exact-budget BEV selection + pointwise compression + masked reconstruction — cutting feature payload <b>26.6×</b> while <b>improving</b> AP@0.5/0.7 by <b>4.13/8.57</b> points with only <b>3.81%</b> extra latency.
           </span>
         </div>
       </div>
@@ -1461,14 +1447,14 @@
 <section id="talks">
   <div class="wrap">
     <h2 class="section-title reveal" data-i18n="section.talks">Talks, Services &amp; Activities</h2>
-    <h3 style="margin-top: 0;">Invited Talks</h3>
+    <h3 style="margin-top: 0;" data-i18n="talks.invited">Invited Talks</h3>
     <ul class="list">
       <li><b>2024.07.24</b> · Datawhale AI Summer Camp Session 2 — Getting Started with AI Competitions (NLP Track): Baseline Interpretation &amp; Advanced Sharing. <a href="https://www.bilibili.com/video/BV1AU411S71h" target="_blank" rel="noopener">Bilibili</a></li>
       <li><b>2023.11.03</b> · NomadWave · 1st National Digital Nomad Conference — Online Collaborative Learning: Building Applications with LangChain. <a href="https://weixin.qq.com/sph/Ay5vA6WisU" target="_blank" rel="noopener">Link</a></li>
       <li><b>2023.05.19</b> · Datawhale AIGC Theme: ChatGPT from Basics to Applications — Outstanding Learners' Sharing. <a href="https://www.bilibili.com/video/BV1nh4y1t7Ey" target="_blank" rel="noopener">Bilibili</a></li>
     </ul>
 
-    <h3>Volunteering &amp; Leadership</h3>
+    <h3 data-i18n="talks.volunteering">Volunteering &amp; Leadership</h3>
     <ul class="list">
       <li><b>2026.08</b> · Program Committee member &amp; reviewer, <a href="https://cikm2026.org/" target="_blank" rel="noopener">CIKM 2026</a> 2nd Workshop on <b>LLM Agents for Social Simulation (LASS)</b>.</li>
       <li><b>2026.07</b> · Note-taking volunteer for the academic talk by Prof. <a href="https://iiis.tsinghua.edu.cn/en/yao/" target="_blank" rel="noopener">Andrew Yao</a> (Turing Award Laureate) at Zhiyuan College, SJTU · <a href="https://mp.weixin.qq.com/s/y7KKJ_AfggwvRazuXQCkSA" target="_blank" rel="noopener" style="color:var(--primary); font-weight:500;">recap ▸</a></li>
@@ -1548,11 +1534,9 @@
   (function () {
     const el = document.getElementById('typed');
     const phrases = [
-      'LLM reasoning data quality',
-      'capability-balanced LLM pruning',
-      'V2X cooperative perception',
-      'multi-agent communication',
-      'post-training diagnostics',
+      'natural language processing',
+      'LLM post-training (SFT / RL / OPD)',
+      'LLM-based agents',
     ];
     let pi = 0, ci = 0, deleting = false;
     function tick() {
@@ -1733,6 +1717,7 @@
         'section.edu': 'Education', 'section.exp': 'Experience',
         'section.proj': 'Open-Source Projects', 'section.honors': 'Selected Honors & Awards',
         'section.talks': 'Talks, Services & Activities',
+        'talks.invited': 'Invited Talks', 'talks.volunteering': 'Volunteering & Leadership',
         'stats.intro': 'Live numbers pulled from ',
         'stats.loading': 'loading…',
         'stats.label.cit': 'Total Citations', 'stats.label.h': 'h-index',
@@ -1747,10 +1732,9 @@
         'shelf.now': '📖 Now reading', 'shelf.queue': '📚 On the shelf',
         'btn.email': 'Email Me', 'btn.cv': 'View CV', 'btn.zh': '中文版',
         // v2.16 — partial body translations
-        'about.bio1': 'I’m a PhD candidate at the School of Computer Science and Engineering, Shanghai Jiao Tong University, advised by Prof. Jianfeng Xu (许建峰). I work at the intersection of LLM post-training, efficient inference, and multi-agent systems — with recent threads on data-quality diagnostics for reasoning, capability-balanced pruning, and communication-efficient cooperative perception.',
+        'about.bio1': 'I’m a PhD candidate at the School of Computer Science and Engineering, Shanghai Jiao Tong University, advised by Prof. Jianfeng Xu (许建峰). My research focuses on natural language processing, LLM post-training (SFT / RL / OPD), and LLM-based agents. I have hands-on experience with agentic-RL methods including GRPO, OPD, OPSD, GSPO, DAPO, Search-R1, ReTool, ALFWorld, Vision GRPO, and Slime.',
         'about.bio2': 'Beyond research, I’m an active open-source contributor to the Datawhale community. My repositories llm-cookbook (24k+ ★) and llm-universe (14k+ ★) are widely used Chinese-language tutorials for LLM engineering. I also co-led the Chinese localization of Stanford’s CS336 course.',
         'about.interests': 'Research Interests',
-        'about.skills': 'Agentic-RL Skills',
         'about.collaborate': 'Open to research collaboration',
         'about.collaborate.desc': 'if you work on any of the above, drop me a line.',
         'interest.1': 'Natural Language Processing',
@@ -1783,7 +1767,7 @@
         'tldr.emnlp': 'Introduces <b>MCSQ</b>, the first multi-dimensional quantitative framework for reasoning-data management, evaluating datasets along <b>6 orthogonal dimensions</b>. Counterintuitively, selectively adding "distorted" (model-disagreed) or "mismatched" (low-relevance) samples — normally discarded — can <b>outperform conventional clean data</b> on advanced reasoning benchmarks, showing dataset <b>structure</b> (not size) is decisive.',
         'tldr.bmc': '<b>TransBindpMHCI</b> is a pan-specific MHC-I binding predictor trained on <b>1.4M mass-spectrometry peptides</b>, using a <b>dual-tier Transformer encoder</b> for stronger feature extraction with reduced complexity. It supports peptides of <b>8–15 amino acids</b>, achieves <b>cross-species (human + murine)</b> prediction, and outperforms existing methods in accuracy, efficiency, and generalizability — validated on HPV-vaccine and tumor-neoantigen datasets.',
         'tldr.airev': 'We generalize compression-style information metrics to <b>two unified forms</b> — <b>OIT</b> and <b>MLT-MF</b> — the only two metrics that consistently correlate with capability retention across tasks, turning "information" into a drop-in training-efficiency objective for any AI model.',
-        'tldr.semrd': 'We give V2X cooperative perception a source-coding <b>closure-fidelity</b> formulation — the first deductive-abstraction treatment of rate-distortion under ego-conditioned remote perception — and instantiate it as <b>SemRD-V2X</b> (BEV-importance scoring + pointwise compression + shared reconstruction), cutting the analytical feature payload by <b>26.6×</b> while lifting mean AP by <b>+0.5 / +0.7</b> at 4.13 / 8.57 points over a local V2X-ViT baseline, at only <b>+3.81%</b> compute latency.',
+        'tldr.semrd': 'Introduces a <b>closure-fidelity</b> perspective answering a more fundamental question than "how to compress": <b>which remote evidence is truly indispensable</b> when the ego vehicle can infer the rest locally? <b>SemRD-V2X</b> operationalizes the derived principle (transmit compact evidence, recover derivable context) via exact-budget BEV selection + pointwise compression + masked reconstruction — cutting feature payload <b>26.6×</b> while <b>improving</b> AP@0.5/0.7 by <b>4.13/8.57</b> points with only <b>3.81%</b> extra latency.',
         'tldr.patent': 'A Transformer-based method for <b>pan-specific peptide–MHC-I</b> binding-affinity prediction with attention-based interaction modeling — paired with the registered software <b>MHC-1 V1.0</b> (see below).',
         'tldr.copyright': 'The end-to-end <b>deployable pipeline</b> that turns the Transformer-based peptide–MHC-I binding predictor above into a runnable tool — Chinese software copyright, registered April 2025.',
         'blog.zhihu.title': 'Is LLM RL really "RL", or is it just supervised learning?',
@@ -1804,6 +1788,7 @@
         'section.edu': '教育背景', 'section.exp': '实习经历',
         'section.proj': '开源项目', 'section.honors': '荣誉与奖项',
         'section.talks': '分享、服务与活动',
+        'talks.invited': '受邀演讲', 'talks.volunteering': '志愿服务与领导力',
         'stats.intro': '数据来自 ',
         'stats.loading': '加载中…',
         'stats.label.cit': '总引用', 'stats.label.h': 'h 指数',
@@ -1818,10 +1803,9 @@
         'shelf.now': '📖 正在读', 'shelf.queue': '📚 待读',
         'btn.email': '发邮件', 'btn.cv': '查看简历', 'btn.zh': 'EN',
         // v2.16 — partial body translations
-        'about.bio1': '我是上海交通大学计算机科学与工程学院的博士研究生，导师是许建峰教授。我的研究方向聚焦于<strong>大模型后训练</strong>、<strong>高效推理</strong>与<strong>多智能体系统</strong>，近期工作集中在<em>推理数据质量诊断</em>、<em>能力均衡的模型剪枝</em>与<em>通信高效的协同感知</em>。',
+        'about.bio1': '我是上海交通大学计算机科学与工程学院的博士研究生，导师是许建峰教授。我的研究方向聚焦于<strong>自然语言处理</strong>、<strong>大模型后训练（SFT / RL / OPD）</strong>与<strong>基于 LLM 的智能体</strong>。我熟练掌握 agentic-RL 相关方法，包括 GRPO、OPD、OPSD、GSPO、DAPO、Search-R1、ReTool、ALFWorld、Vision GRPO 与 Slime。',
         'about.bio2': '研究之外，我也是 Datawhale 社区的活跃开源贡献者。我的仓库 <a href="https://github.com/datawhalechina/llm-cookbook">llm-cookbook</a>（24k+ ★）与 <a href="https://github.com/datawhalechina/llm-universe">llm-universe</a>（14k+ ★）是国内广泛使用的大模型工程中文教程。此外，我联合主导了斯坦福 <a href="https://github.com/datawhalechina/diy-llm">CS336</a> 课程的中文化工作。',
         'about.interests': '研究方向',
-        'about.skills': 'Agentic-RL 技能',
         'about.collaborate': '欢迎学术合作',
         'about.collaborate.desc': '如果你在以上方向工作，欢迎随时联系我。',
         'interest.1': '自然语言处理',
@@ -1853,7 +1837,7 @@
         'tldr.emnlp': '提出 <b>MCSQ</b> — 首个多维量化推理数据管理框架，从 <b>6 个正交维度</b>评估数据集。反直觉的是：选择性加入"失真"（模型分歧）或"错配"（低相关）样本（通常被丢弃）反而能在高级推理 benchmark 上<b>超越传统干净数据</b>，说明数据<b>结构</b>（而非规模）才是决定性因素。',
         'tldr.bmc': '<b>TransBindpMHCI</b> 是一个 pan-specific MHC-I 结合预测器，基于 <b>140 万条质谱肽段</b>建模，采用 <b>双层 Transformer 编码器</b>在增强特征提取的同时降低计算复杂度。支持 <b>8–15 个氨基酸</b>肽段、<b>跨物种（人 + 小鼠）</b>预测，在准确性、计算效率和泛化能力上均优于现有方法 — 并在 HPV 疫苗与肿瘤新抗原数据集上得到验证。',
         'tldr.airev': '我们将压缩式信息度量推广为 <b>两种统一形式</b> — <b>OIT</b> 和 <b>MLT-MF</b> — 唯一两个在跨任务中持续与能力保持率相关的指标，把"信息"变成任意 AI 模型的训练效率即插即用目标。',
-        'tldr.semrd': '我们为 V2X 协同感知给出一个源编码 <b>closure-fidelity</b> 公式 — 第一个在 ego-conditioned 远程感知下做 rate-distortion 的演绎抽象处理 — 并实例化为 <b>SemRD-V2X</b>（BEV 重要性打分 + 点压缩 + 共享重建），把分析特征载荷削减 <b>26.6×</b>，在本地 V2X-ViT baseline 上 AP 提升 <b>+0.5/+0.7</b>（4.13/8.57 个点），计算延迟仅增 <b>+3.81%</b>。',
+        'tldr.semrd': '提出 <b>closure-fidelity</b> 视角，回答一个比"如何压缩"更根本的问题：当自车能本地推断其余部分时，<b>哪些远端证据真正不可或缺</b>？<b>SemRD-V2X</b> 将推导出的原则（传输紧凑证据、恢复可推导上下文）落地为 exact-budget BEV 选择 + 逐点压缩 + 掩码重建 — 特征载荷削减 <b>26.6×</b>，同时 AP@0.5/0.7 <b>提升 4.13/8.57</b> 个点，仅增 <b>3.81%</b> 延迟。',
         'tldr.patent': '一种基于 Transformer 的 <b>pan-specific peptide–MHC-I</b> 结合亲和力预测方法，采用 attention-based 交互建模 — 配套已登记软件 <b>MHC-1 V1.0</b>（见下）。',
         'tldr.copyright': '把上述 Transformer-based peptide–MHC-I 结合预测器变为可部署工具的端到端 <b>可执行 pipeline</b> — 中国软件著作权，2025 年 4 月登记。',
         // v2.17 — blog (ZH only)
