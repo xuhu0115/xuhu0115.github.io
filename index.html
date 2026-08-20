@@ -916,11 +916,23 @@
 
     <h3 data-i18n="about.interests">Research Interests</h3>
     <div class="interests">
-      <span class="interest-pill"><span class="dot"></span><span data-i18n="interest.1">LLM Reasoning &amp; Post-training</span></span>
-      <span class="interest-pill"><span class="dot"></span><span data-i18n="interest.2">Efficient LLMs (Pruning / Quantization)</span></span>
-      <span class="interest-pill"><span class="dot"></span><span data-i18n="interest.3">Multi-Agent Systems</span></span>
-      <span class="interest-pill"><span class="dot"></span><span data-i18n="interest.4">Data-Centric AI / Quality Diagnostics</span></span>
-      <span class="interest-pill"><span class="dot"></span><span data-i18n="interest.5">V2X Cooperative Perception</span></span>
+      <span class="interest-pill"><span class="dot"></span><span data-i18n="interest.1">Natural Language Processing</span></span>
+      <span class="interest-pill"><span class="dot"></span><span data-i18n="interest.2">LLM Post-training (SFT / RL / OPD)</span></span>
+      <span class="interest-pill"><span class="dot"></span><span data-i18n="interest.3">LLM-based Agents</span></span>
+    </div>
+
+    <h3 data-i18n="about.skills" style="margin-top:18px;">Agentic-RL Skills</h3>
+    <div class="interests">
+      <span class="interest-pill"><span class="dot"></span>GRPO</span>
+      <span class="interest-pill"><span class="dot"></span>OPD</span>
+      <span class="interest-pill"><span class="dot"></span>OPSD</span>
+      <span class="interest-pill"><span class="dot"></span>GSPO</span>
+      <span class="interest-pill"><span class="dot"></span>DAPO</span>
+      <span class="interest-pill"><span class="dot"></span>Search-R1</span>
+      <span class="interest-pill"><span class="dot"></span>ReTool</span>
+      <span class="interest-pill"><span class="dot"></span>ALFWorld</span>
+      <span class="interest-pill"><span class="dot"></span>Vision GRPO</span>
+      <span class="interest-pill"><span class="dot"></span>Slime</span>
     </div>
 
     <p style="margin-top:18px; font-size: 14.5px;">
@@ -1045,7 +1057,7 @@
         <div class="pub-tldr">
           <span class="icon">💡</span>
           <span class="text" data-i18n="tldr.emnlp">
-            Across <b>7 reasoning benchmarks</b> and <b>3 model families</b>, a small dataset that is both <b>CoT-correct</b> and <b>semantically diverse</b> beats an <b>8× larger</b> unfiltered one — for LLM reasoning, data <b>structure</b> (correctness + diversity) trumps data <b>size</b>.
+            Introduces <b>MCSQ</b>, the first multi-dimensional quantitative framework for reasoning-data management, evaluating datasets along <b>6 orthogonal dimensions</b>. Counterintuitively, selectively adding "distorted" (model-disagreed) or "mismatched" (low-relevance) samples — normally discarded — can <b>outperform conventional clean data</b> on advanced reasoning benchmarks, showing dataset <b>structure</b> (not size) is decisive.
           </span>
         </div>
         <div class="pub-links">
@@ -1075,7 +1087,7 @@
         <div class="pub-tldr">
           <span class="icon">💡</span>
           <span class="text" data-i18n="tldr.bmc">
-            <b>TransBindpMHCI</b> is a Transformer-based <b>pan-specific</b> MHC-I binding predictor that jointly encodes peptide + pseudo-MHC-I contexts through an attention-based interaction head — improving cross-allele binding-affinity prediction over CNN baselines.
+            <b>TransBindpMHCI</b> is a pan-specific MHC-I binding predictor trained on <b>1.4M mass-spectrometry peptides</b>, using a <b>dual-tier Transformer encoder</b> for stronger feature extraction with reduced complexity. It supports peptides of <b>8–15 amino acids</b>, achieves <b>cross-species (human + murine)</b> prediction, and outperforms existing methods in accuracy, efficiency, and generalizability — validated on HPV-vaccine and tumor-neoantigen datasets.
           </span>
         </div>
         <div class="pub-links">
@@ -1195,7 +1207,7 @@
       <div class="tl-item">
         <div class="tl-head" data-i18n="edu.title.me">M.E. in Biological and Pharmaceutical Engineering</div>
         <div class="tl-meta">2021.09 — 2024.06</div>
-        <div class="tl-desc" data-i18n="edu.desc.me">重庆大学 · 生物工程学院+医学院联合培养 · 医工交叉方向 · 生物与医药</div>
+        <div class="tl-desc" data-i18n="edu.desc.me">Chongqing University · Joint Bioengineering &amp; Medical program · Advisor: <a href="https://med.cqu.edu.cn/info/1160/3556.htm" target="_blank" rel="noopener">Qian Cheng (钱程)</a></div>
       </div>
       <div class="tl-item">
         <div class="tl-head" data-i18n="edu.title.be">B.E. in Computer Science and Technology</div>
@@ -1378,19 +1390,29 @@
         </div>
         <ul class="reading-list">
           <li class="reading-item">
-            <div class="ri-title">The Llama 3 Herd of Models</div>
-            <div class="ri-meta">Grattafiori et al. · Meta AI · 2024 · Technical Report</div>
-            <div class="ri-tags"><span class="pub-tag t-reasoning">LLM Training</span><span class="pub-tag t-reasoning">SFT / RLHF</span></div>
+            <div class="ri-title"><a href="http://arxiv.org/abs/2511.20639" target="_blank" rel="noopener">Latent Collaboration in Multi-Agent Systems</a></div>
+            <div class="ri-meta">arXiv · 2511.20639</div>
+            <div class="ri-tags"><span class="pub-tag t-reasoning">Multi-Agent</span><span class="pub-tag t-reasoning">Collaboration</span></div>
           </li>
           <li class="reading-item">
-            <div class="ri-title">Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection</div>
-            <div class="ri-meta">Asai et al. · ICLR 2024</div>
-            <div class="ri-tags"><span class="pub-tag t-reasoning">RAG</span><span class="pub-tag t-reasoning">Reflection</span></div>
+            <div class="ri-title">Rethinking On-Policy Distillation of Large Language Models: Phenomenology, Mechanism, and Recipe</div>
+            <div class="ri-meta">OPD · post-training</div>
+            <div class="ri-tags"><span class="pub-tag t-reasoning">OPD</span><span class="pub-tag t-reasoning">Distillation</span></div>
           </li>
           <li class="reading-item">
-            <div class="ri-title">Process Reward Models</div>
-            <div class="ri-meta">Lightman et al. · ICML 2024</div>
-            <div class="ri-tags"><span class="pub-tag t-reasoning">Reasoning</span><span class="pub-tag t-reasoning">PRM</span></div>
+            <div class="ri-title">Cross-Tokenizer On-Policy Distillation via Byte-Prefix Marginalization</div>
+            <div class="ri-meta">OPD · cross-tokenizer</div>
+            <div class="ri-tags"><span class="pub-tag t-reasoning">OPD</span><span class="pub-tag t-reasoning">Tokenizer</span></div>
+          </li>
+          <li class="reading-item">
+            <div class="ri-title"><a href="https://thinkingmachines.ai/blog/on-policy-distillation/" target="_blank" rel="noopener">On-Policy Distillation (blog)</a></div>
+            <div class="ri-meta">Thinking Machines · blog</div>
+            <div class="ri-tags"><span class="pub-tag t-reasoning">OPD</span><span class="pub-tag t-reasoning">Guide</span></div>
+          </li>
+          <li class="reading-item">
+            <div class="ri-title">V2X-ViTv2: Improved Vision Transformers for Vehicle-to-Everything Cooperative Perception</div>
+            <div class="ri-meta">R. Xu et al. · IEEE TPAMI 2025 · doi:10.1109/TPAMI.2024.3479222</div>
+            <div class="ri-tags"><span class="pub-tag t-v2x">V2X</span><span class="pub-tag t-v2x">Cooperative Perception</span></div>
           </li>
         </ul>
       </div>
@@ -1400,24 +1422,14 @@
         </div>
         <ul class="reading-list">
           <li class="reading-item">
-            <div class="ri-title">Constitutional AI: Harmlessness from AI Feedback</div>
-            <div class="ri-meta">Bai et al. · Anthropic · 2022</div>
-            <div class="ri-tags"><span class="pub-tag t-theory">Alignment</span><span class="pub-tag t-theory">RLHF</span></div>
+            <div class="ri-title"><a href="https://arxiv.org/pdf/2607.24653" target="_blank" rel="noopener">KIMI K3: Open Frontier Intelligence</a></div>
+            <div class="ri-meta">Moonshot AI · arXiv 2607.24653</div>
+            <div class="ri-tags"><span class="pub-tag t-theory">Frontier LLM</span><span class="pub-tag t-theory">Reasoning</span></div>
           </li>
           <li class="reading-item">
-            <div class="ri-title">Direct Preference Optimization</div>
-            <div class="ri-meta">Rafailov et al. · NeurIPS 2023</div>
-            <div class="ri-tags"><span class="pub-tag t-theory">DPO</span><span class="pub-tag t-theory">Post-training</span></div>
-          </li>
-          <li class="reading-item">
-            <div class="ri-title">V2X-ViT: Vehicle-to-Everything Cooperative Perception with Vision Transformer</div>
-            <div class="ri-meta">Xu et al. · ECCV 2022</div>
-            <div class="ri-tags"><span class="pub-tag t-v2x">V2X</span><span class="pub-tag t-v2x">Transformer</span></div>
-          </li>
-          <li class="reading-item">
-            <div class="ri-title">Test-Time Training for LLMs</div>
-            <div class="ri-meta">Sun et al. · 2024 · preprint</div>
-            <div class="ri-tags"><span class="pub-tag t-reasoning">TTT</span><span class="pub-tag t-reasoning">Long-context</span></div>
+            <div class="ri-title"><a href="http://arxiv.org/abs/2606.30406" target="_blank" rel="noopener">MOPD: Multi-Teacher On-Policy Distillation for Capability Integration in LLM Post-Training</a></div>
+            <div class="ri-meta">arXiv · 2606.30406</div>
+            <div class="ri-tags"><span class="pub-tag t-theory">OPD</span><span class="pub-tag t-theory">Multi-Teacher</span></div>
           </li>
         </ul>
       </div>
@@ -1462,11 +1474,6 @@
       <li><b>2026.07</b> · Note-taking volunteer for the academic talk by Prof. <a href="https://iiis.tsinghua.edu.cn/en/yao/" target="_blank" rel="noopener">Andrew Yao</a> (Turing Award Laureate) at Zhiyuan College, SJTU · <a href="https://mp.weixin.qq.com/s/y7KKJ_AfggwvRazuXQCkSA" target="_blank" rel="noopener" style="color:var(--primary); font-weight:500;">recap ▸</a></li>
       <li><b>2026.07</b> · Represented the PhD Student Party Branch (Intelligent Software and System Security) at a joint exchange visit to <a href="https://www.mihoyo.com/" target="_blank" rel="noopener">miHoYo</a>.</li>
       <li><b>2020.05 — now</b> · <a href="https://datawhale.cn/" target="_blank" rel="noopener">Datawhale</a> open-source community member, helping newcomers enter the AI community.</li>
-    </ul>
-
-    <h3>Blog / 公众号</h3>
-    <ul class="list">
-      <li>《图灵奖得主 LeCun，关于大模型的下一步来了》 — <b>Hu Xu</b>, Shengkang Li, Yinhe Jiang, Youzhen Li · 7,726 views · 181 likes · 730 shares. <a href="https://mp.weixin.qq.com/s/Zau10ioTWzhj0KOImpasNg" target="_blank" rel="noopener">WeChat</a></li>
     </ul>
   </div>
 </section>
@@ -1743,13 +1750,12 @@
         'about.bio1': 'I’m a PhD candidate at the School of Computer Science and Engineering, Shanghai Jiao Tong University, advised by Prof. Jianfeng Xu (许建峰). I work at the intersection of LLM post-training, efficient inference, and multi-agent systems — with recent threads on data-quality diagnostics for reasoning, capability-balanced pruning, and communication-efficient cooperative perception.',
         'about.bio2': 'Beyond research, I’m an active open-source contributor to the Datawhale community. My repositories llm-cookbook (24k+ ★) and llm-universe (14k+ ★) are widely used Chinese-language tutorials for LLM engineering. I also co-led the Chinese localization of Stanford’s CS336 course.',
         'about.interests': 'Research Interests',
+        'about.skills': 'Agentic-RL Skills',
         'about.collaborate': 'Open to research collaboration',
         'about.collaborate.desc': 'if you work on any of the above, drop me a line.',
-        'interest.1': 'LLM Reasoning & Post-training',
-        'interest.2': 'Efficient LLMs (Pruning / Quantization)',
-        'interest.3': 'Multi-Agent Systems',
-        'interest.4': 'Data-Centric AI / Quality Diagnostics',
-        'interest.5': 'V2X Cooperative Perception',
+        'interest.1': 'Natural Language Processing',
+        'interest.2': 'LLM Post-training (SFT / RL / OPD)',
+        'interest.3': 'LLM-based Agents',
         'now.label.phd': 'PhD @ SJTU',
         'now.title.phd': 'LLM post-training, LLM agents, OPD (on-policy distillation)',
         'now.desc.phd': 'Focusing on capability transfer and supervision signals in LLM post-training; recently working on on-policy distillation (OPD) for agent scenarios.',
@@ -1763,14 +1769,10 @@
         'now.title.writing': 'Submitting SemRD-V2X',
         'now.desc.writing': 'Preparing the SemRD-V2X closure-fidelity framework for V2X cooperative perception for submission.',
         // v2.17 — Now exact literal wording (EN side)
-        'now.title.phd.lit': 'LLM post-training, LLM agents, OPD (on-policy distillation)',
-        'now.title.intern.lit': 'Looking for next internship',
-        'now.title.opensource.lit': 'diy-llm project, updating with frontier techniques',
-        'now.title.writing.lit': 'Submitting SemRD-V2X work',
         'edu.title.phd': 'Ph.D. Candidate in Computer Science and Engineering',
-        'edu.desc.phd': 'Shanghai Jiao Tong University · Advisor: Prof. Jianfeng Xu (许建峰)',
+        'edu.desc.phd': 'Shanghai Jiao Tong University · Advisor: <a href="https://zhsf.sjtu.edu.cn/info/1447/6574.htm">Prof. Jianfeng Xu (许建峰)</a>',
         'edu.title.me': 'M.E. in Biological and Pharmaceutical Engineering',
-        'edu.desc.me': 'Chongqing University',
+        'edu.desc.me': 'Chongqing University · Joint Bioengineering &amp; Medical program · Advisor: <a href="https://med.cqu.edu.cn/info/1160/3556.htm">Qian Cheng (钱程)</a>',
         'edu.title.be': 'B.E. in Computer Science and Technology',
         'edu.desc.be': 'Xi’an Jiaotong University City College',
         'exp.desc.jd': 'Led LLM post-training, improving mathematical reasoning via SFT + GRPO alignment; authored the first-author paper "Averaged Evaluation Masks Capability Trade-Offs" (IGSP pruning calibration, under review); contributed to FlowTrain (flow-based decoupled training for industrial vision-language models).',
@@ -1778,8 +1780,8 @@
         'exp.desc.datawhale': 'Applied machine learning, deep learning, and large-model algorithms to real-world applications.',
         // v2.17 — TLDR (EN fallback: restore original English when toggling back)
         'tldr.igsp': 'We dissect <b>15 calibration sources</b> for LLM pruning under LLaMA-3.1-8B and find that the famous <b>2.85-point</b> averaged gap masks a <b>51.9-point Code-vs-General</b> trade-off — <b>IGSP</b> (information-guided self-calibration) closes <b>49%</b> of the gap to real multi-source data <b>without any pretraining-corpus access</b>, beating the strongest single source by <b>8.8 points</b> at 60% SparseGPT sparsity.',
-        'tldr.emnlp': 'Across <b>7 reasoning benchmarks</b> and <b>3 model families</b>, a small dataset that is both <b>CoT-correct</b> and <b>semantically diverse</b> beats an <b>8× larger</b> unfiltered one — for LLM reasoning, data <b>structure</b> (correctness + diversity) trumps data <b>size</b>.',
-        'tldr.bmc': '<b>TransBindpMHCI</b> is a Transformer-based <b>pan-specific</b> MHC-I binding predictor that jointly encodes peptide + pseudo-MHC-I contexts through an attention-based interaction head — improving cross-allele binding-affinity prediction over CNN baselines.',
+        'tldr.emnlp': 'Introduces <b>MCSQ</b>, the first multi-dimensional quantitative framework for reasoning-data management, evaluating datasets along <b>6 orthogonal dimensions</b>. Counterintuitively, selectively adding "distorted" (model-disagreed) or "mismatched" (low-relevance) samples — normally discarded — can <b>outperform conventional clean data</b> on advanced reasoning benchmarks, showing dataset <b>structure</b> (not size) is decisive.',
+        'tldr.bmc': '<b>TransBindpMHCI</b> is a pan-specific MHC-I binding predictor trained on <b>1.4M mass-spectrometry peptides</b>, using a <b>dual-tier Transformer encoder</b> for stronger feature extraction with reduced complexity. It supports peptides of <b>8–15 amino acids</b>, achieves <b>cross-species (human + murine)</b> prediction, and outperforms existing methods in accuracy, efficiency, and generalizability — validated on HPV-vaccine and tumor-neoantigen datasets.',
         'tldr.airev': 'We generalize compression-style information metrics to <b>two unified forms</b> — <b>OIT</b> and <b>MLT-MF</b> — the only two metrics that consistently correlate with capability retention across tasks, turning "information" into a drop-in training-efficiency objective for any AI model.',
         'tldr.semrd': 'We give V2X cooperative perception a source-coding <b>closure-fidelity</b> formulation — the first deductive-abstraction treatment of rate-distortion under ego-conditioned remote perception — and instantiate it as <b>SemRD-V2X</b> (BEV-importance scoring + pointwise compression + shared reconstruction), cutting the analytical feature payload by <b>26.6×</b> while lifting mean AP by <b>+0.5 / +0.7</b> at 4.13 / 8.57 points over a local V2X-ViT baseline, at only <b>+3.81%</b> compute latency.',
         'tldr.patent': 'A Transformer-based method for <b>pan-specific peptide–MHC-I</b> binding-affinity prediction with attention-based interaction modeling — paired with the registered software <b>MHC-1 V1.0</b> (see below).',
@@ -1819,13 +1821,12 @@
         'about.bio1': '我是上海交通大学计算机科学与工程学院的博士研究生，导师是许建峰教授。我的研究方向聚焦于<strong>大模型后训练</strong>、<strong>高效推理</strong>与<strong>多智能体系统</strong>，近期工作集中在<em>推理数据质量诊断</em>、<em>能力均衡的模型剪枝</em>与<em>通信高效的协同感知</em>。',
         'about.bio2': '研究之外，我也是 Datawhale 社区的活跃开源贡献者。我的仓库 <a href="https://github.com/datawhalechina/llm-cookbook">llm-cookbook</a>（24k+ ★）与 <a href="https://github.com/datawhalechina/llm-universe">llm-universe</a>（14k+ ★）是国内广泛使用的大模型工程中文教程。此外，我联合主导了斯坦福 <a href="https://github.com/datawhalechina/diy-llm">CS336</a> 课程的中文化工作。',
         'about.interests': '研究方向',
+        'about.skills': 'Agentic-RL 技能',
         'about.collaborate': '欢迎学术合作',
         'about.collaborate.desc': '如果你在以上方向工作，欢迎随时联系我。',
-        'interest.1': '大模型推理与后训练',
-        'interest.2': '高效大模型（剪枝 / 量化）',
-        'interest.3': '多智能体系统',
-        'interest.4': '数据中心 AI / 质量诊断',
-        'interest.5': 'V2X 协同感知',
+        'interest.1': '自然语言处理',
+        'interest.2': '大模型后训练（SFT / RL / OPD）',
+        'interest.3': '基于 LLM 的智能体',
         'now.label.phd': 'PhD @ SJTU',
         'now.title.phd': '大模型后训练，基于大模型的智能体，OPD（on-policy distillation）',
         'now.desc.phd': '聚焦 LLM 后训练中的能力迁移与监督信号问题；近期关注 on-policy distillation（OPD）在智能体场景下的应用。',
@@ -1838,15 +1839,10 @@
         'now.label.writing': '写作',
         'now.title.writing': '投稿 SemRD-V2X 工作',
         'now.desc.writing': '将 V2X 协同感知的源编码 closure-fidelity 框架（SemRD-V2X）整理后投稿。',
-        // v2.17 — Now exact literal wording (ZH side)
-        'now.title.phd.lit': '大模型后训练，基于大模型的智能体，OPD（on-policy distillation）',
-        'now.title.intern.lit': '寻找实习中',
-        'now.title.opensource.lit': 'diy-llm 项目，更新前沿技术',
-        'now.title.writing.lit': '投稿 SemRD-V2X 工作',
         'edu.title.phd': '博士研究生 · 电子信息',
-        'edu.desc.phd': '上海交通大学 · 计算机学院 · 导师：<a href="https://zhsf.sjtu.edu.cn/info/1447/6574.htm">许建峰教授</a>',
+        'edu.desc.phd': '上海交通大学 · 计算机学院 · 专业 电子信息 · 导师：<a href="https://zhsf.sjtu.edu.cn/info/1447/6574.htm">许建峰教授</a>',
         'edu.title.me': '工学硕士 · 生物与医药',
-        'edu.desc.me': '重庆大学 · 生物工程学院+医学院联合培养 · 医工交叉方向',
+        'edu.desc.me': '重庆大学 · 生物工程学院+医学院联合培养 · 医工交叉方向 · 导师：<a href="https://med.cqu.edu.cn/info/1160/3556.htm">钱程</a>',
         'edu.title.be': '工学学士 · 计算机科学与技术',
         'edu.desc.be': '西安交通大学城市学院',
         'exp.desc.jd': '负责大模型后训练（Post-training），通过 SFT + GRPO 对齐流程提升模型数学推理能力；完成一作论文《Averaged Evaluation Masks Capability Trade-Offs》（IGSP 剪枝校准，审稿中）；参与 FlowTrain 项目（工业级视觉-语言模型的流式解耦训练）。',
@@ -1854,8 +1850,8 @@
         'exp.desc.datawhale': '将机器学习、深度学习及大模型算法应用于实际场景。',
         // v2.17 — paper TL;DRs (ZH only)
         'tldr.igsp': '我们剖析了 LLaMA-3.1-8B 上 15 个剪枝校准源，发现著名的 2.85 分平均差距背后藏着 <b>51.9 分的 Code-vs-General 能力 trade-off</b>。<b>IGSP</b>（information-guided self-calibration）无需任何预训练语料，把真实多源校准的差距缩小了 <b>49%</b>，在 60% SparseGPT 稀疏度下比最强单源还高 <b>8.8 分</b>。',
-        'tldr.emnlp': '在 <b>7 个推理 benchmark</b> 和 <b>3 个模型族</b>上，<b>CoT-正确 + 语义多样</b>的小数据集击败了 <b>8× 大的未筛选数据</b> — 对 LLM 推理而言，数据<b>结构</b>（正确性 + 多样性）胜过数据<b>规模</b>。',
-        'tldr.bmc': '<b>TransBindpMHCI</b> 是一个基于 Transformer 的 <b>pan-specific</b> MHC-I 结合预测器，通过 attention-based 交互头联合编码 peptide + pseudo-MHC-I 上下文 — 在跨 allele 结合亲和力预测上优于 CNN baseline。',
+        'tldr.emnlp': '提出 <b>MCSQ</b> — 首个多维量化推理数据管理框架，从 <b>6 个正交维度</b>评估数据集。反直觉的是：选择性加入"失真"（模型分歧）或"错配"（低相关）样本（通常被丢弃）反而能在高级推理 benchmark 上<b>超越传统干净数据</b>，说明数据<b>结构</b>（而非规模）才是决定性因素。',
+        'tldr.bmc': '<b>TransBindpMHCI</b> 是一个 pan-specific MHC-I 结合预测器，基于 <b>140 万条质谱肽段</b>建模，采用 <b>双层 Transformer 编码器</b>在增强特征提取的同时降低计算复杂度。支持 <b>8–15 个氨基酸</b>肽段、<b>跨物种（人 + 小鼠）</b>预测，在准确性、计算效率和泛化能力上均优于现有方法 — 并在 HPV 疫苗与肿瘤新抗原数据集上得到验证。',
         'tldr.airev': '我们将压缩式信息度量推广为 <b>两种统一形式</b> — <b>OIT</b> 和 <b>MLT-MF</b> — 唯一两个在跨任务中持续与能力保持率相关的指标，把"信息"变成任意 AI 模型的训练效率即插即用目标。',
         'tldr.semrd': '我们为 V2X 协同感知给出一个源编码 <b>closure-fidelity</b> 公式 — 第一个在 ego-conditioned 远程感知下做 rate-distortion 的演绎抽象处理 — 并实例化为 <b>SemRD-V2X</b>（BEV 重要性打分 + 点压缩 + 共享重建），把分析特征载荷削减 <b>26.6×</b>，在本地 V2X-ViT baseline 上 AP 提升 <b>+0.5/+0.7</b>（4.13/8.57 个点），计算延迟仅增 <b>+3.81%</b>。',
         'tldr.patent': '一种基于 Transformer 的 <b>pan-specific peptide–MHC-I</b> 结合亲和力预测方法，采用 attention-based 交互建模 — 配套已登记软件 <b>MHC-1 V1.0</b>（见下）。',
