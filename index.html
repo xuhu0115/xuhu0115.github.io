@@ -1669,47 +1669,47 @@
   })();
 
   // 11) OpenAlex stats — live citations / h-index / i10 / works
-  (function () {
-    const updated = document.getElementById('statsUpdated');
-    const authorIdMeta = document.querySelector('meta[name="openalex-author-id"]');
-    const authorId = authorIdMeta ? authorIdMeta.content.trim() : '';
-    const MAILTO = 'xuhu6736@sjtu.edu.cn';
-    const url = authorId
-      ? `https://api.openalex.org/authors/${authorId}?mailto=${MAILTO}`
-      : `https://api.openalex.org/authors?search=Hu%20Xu&per_page=1&mailto=${MAILTO}`;
-    function animate(el, target) {
-      const dur = 1200; const start = performance.now();
-      function tick(now) {
-        const t = Math.min(1, (now - start) / dur);
-        const eased = 1 - Math.pow(1 - t, 3);
-        el.textContent = Math.round(target * eased).toLocaleString();
-        if (t < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-    function setValue(id, v) {
-      const el = document.getElementById(id);
-      if (el && typeof v === 'number') animate(el, v);
-    }
-    fetch(url)
-      .then(r => r.ok ? r.json() : Promise.reject(r.status))
-      .then(data => {
-        const a = authorId ? data : (data.results && data.results[0]);
-        if (!a) throw new Error('No author found');
-        setValue('stat-citations', a.cited_by_count || 0);
-        const s = a.summary_stats || {};
-        setValue('stat-h', s['2yr_mean_citedness'] != null ? Math.round(s['2yr_mean_citedness']) : 0);
-        // OpenAlex h-index / i10 — fall back to cited_by_count if absent
-        setValue('stat-i10', a.summary_stats && a.summary_stats.i10_index || 0);
-        setValue('stat-works', a.works_count || 0);
-        if (updated) updated.textContent = new Date().toLocaleString();
-      })
-      .catch(err => {
-        console.warn('OpenAlex fetch failed:', err);
-        if (updated) updated.textContent = 'unavailable (API blocked or CORS)';
-        // Fallback: keep the dashes
-      });
-  })();
+  // (function () {
+  //   const updated = document.getElementById('statsUpdated');
+  //   const authorIdMeta = document.querySelector('meta[name="openalex-author-id"]');
+  //   const authorId = authorIdMeta ? authorIdMeta.content.trim() : '';
+  //   const MAILTO = 'xuhu6736@sjtu.edu.cn';
+  //   const url = authorId
+  //     ? `https://api.openalex.org/authors/${authorId}?mailto=${MAILTO}`
+  //     : `https://api.openalex.org/authors?search=Hu%20Xu&per_page=1&mailto=${MAILTO}`;
+  //   function animate(el, target) {
+  //     const dur = 1200; const start = performance.now();
+  //     function tick(now) {
+  //       const t = Math.min(1, (now - start) / dur);
+  //       const eased = 1 - Math.pow(1 - t, 3);
+  //       el.textContent = Math.round(target * eased).toLocaleString();
+  //       if (t < 1) requestAnimationFrame(tick);
+  //     }
+  //     requestAnimationFrame(tick);
+  //   }
+  //   function setValue(id, v) {
+  //     const el = document.getElementById(id);
+  //     if (el && typeof v === 'number') animate(el, v);
+  //   }
+  //   fetch(url)
+  //     .then(r => r.ok ? r.json() : Promise.reject(r.status))
+  //     .then(data => {
+  //       const a = authorId ? data : (data.results && data.results[0]);
+  //       if (!a) throw new Error('No author found');
+  //       setValue('stat-citations', a.cited_by_count || 0);
+  //       const s = a.summary_stats || {};
+  //       setValue('stat-h', s['2yr_mean_citedness'] != null ? Math.round(s['2yr_mean_citedness']) : 0);
+  //       // OpenAlex h-index / i10 — fall back to cited_by_count if absent
+  //       setValue('stat-i10', a.summary_stats && a.summary_stats.i10_index || 0);
+  //       setValue('stat-works', a.works_count || 0);
+  //       if (updated) updated.textContent = new Date().toLocaleString();
+  //     })
+  //     .catch(err => {
+  //       console.warn('OpenAlex fetch failed:', err);
+  //       if (updated) updated.textContent = 'unavailable (API blocked or CORS)';
+  //       // Fallback: keep the dashes
+  //     });
+  // })();
 
   // 12) Language toggle (EN ⇄ 中)
   (function () {
