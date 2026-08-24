@@ -107,7 +107,10 @@
     .hero-name .cn { font-weight: 600; color: var(--text-muted); font-size: 26px; margin-left: 6px; }
     .hero-tagline { font-size: 18px; color: var(--text-muted); margin: 14px 0 18px; max-width: 600px; }
     .hero-tagline strong { color: var(--text); font-weight: 600; }
+    .hero-tagline .typed { margin-left: 5px; }
     .hero-bio { font-size: 15.5px; color: var(--text-muted); margin: 18px 0 22px; max-width: 620px; }
+    .hero-contact { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; color: var(--text-muted); font-size: 13.5px; }
+    .hero-contact a { color: inherit; }
     .hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0 22px; }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
@@ -816,14 +819,14 @@
       <div>
         <div class="status-badge reveal">
           <span class="pulse"></span>
-          <span data-i18n="status.badge">PhD Candidate @ SJTU · 2024 — present</span>
+          <span data-i18n="status.badge">PhD Candidate @ SJTU · Expected graduation: Jun 2028</span>
         </div>
         <h1 class="hero-name reveal delay-1">Hu Xu<span class="cn">徐虎</span></h1>
         <p class="hero-tagline reveal delay-2">
           <span class="typed-wrap" data-i18n="hero.working">Working on </span><span class="typed" id="typed"></span>
         </p>
         <p class="hero-bio reveal delay-3">
-          I work on making large language models more <em>efficient</em>, <em>interpretable</em>, and <em>collaborative</em> — from data quality and post-training pruning, to multi-agent communication and cooperative perception. Open to research collaboration — feel free to reach out. 😊
+          I study how to make large language models more capable and efficient through post-training, reasoning, and agentic reinforcement learning. My work connects data quality, SFT/GRPO alignment, capability trade-offs, and efficient training systems.
         </p>
         <div class="hero-cta">
           <a class="btn btn-primary glow-btn" href="mailto:xuhu6736@sjtu.edu.cn">
@@ -854,6 +857,13 @@
               <text x="128" y="166" text-anchor="middle" font-family="Georgia, serif" font-size="138" font-weight="bold" fill="#FFFFFF" letter-spacing="-4">iD</text>
             </svg>
           </a>
+        </div>
+        <div class="hero-contact">
+          <span>Phone: <a href="tel:+8619821488467">19821488467</a></span>
+          <span>Seeking: LLM Post-training / Reasoning / Agentic RL</span>
+          <a href="https://scholar.google.com/citations?user=5R1pwnIAAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://github.com/xuhu0115" target="_blank" rel="noopener">GitHub</a>
+          <a href="./index.html">Homepage</a>
         </div>
       </div>
       <div class="hero-photo">
@@ -908,8 +918,8 @@
     </p>
     <p data-i18n="about.bio2">
       Beyond research, I'm an active open-source contributor to the Datawhale community. My repositories
-      <a href="https://github.com/datawhalechina/llm-cookbook" target="_blank" rel="noopener">llm-cookbook</a> (24k+ ★) and
-      <a href="https://github.com/datawhalechina/llm-universe" target="_blank" rel="noopener">llm-universe</a> (14k+ ★) are widely used
+      <a href="https://github.com/datawhalechina/llm-cookbook" target="_blank" rel="noopener">llm-cookbook</a> (21.9k+ ★) and
+      <a href="https://github.com/datawhalechina/llm-universe" target="_blank" rel="noopener">llm-universe</a> (10.5k+ ★) are widely used
       Chinese-language tutorials for LLM engineering. I also co-led the Chinese localization of Stanford's
       <a href="https://github.com/datawhalechina/diy-llm" target="_blank" rel="noopener">CS336</a> course.
     </p>
@@ -952,7 +962,7 @@
       <div class="now-card reveal glow delay-2">
         <div class="now-icon">🛠</div>
         <div class="now-label" data-i18n="now.label.opensource">Open Source</div>
-        <div class="now-title" data-i18n="now.title.opensource">diy-llm (CS336 中文版) · 24k+ ★ LLM cookbook</div>
+        <div class="now-title" data-i18n="now.title.opensource">diy-llm (CS336 中文版) · 1.2k+ ★</div>
         <div class="now-desc" data-i18n="now.desc.opensource">Co-leading the Chinese localization of Stanford CS336, plus ongoing LLM-eng tutorials.</div>
         <div class="now-meta">Datawhale community</div>
       </div>
@@ -1043,7 +1053,7 @@
         <div class="pub-tldr">
           <span class="icon">💡</span>
           <span class="text" data-i18n="tldr.emnlp">
-            Introduces <b>MCSQ</b>, the first multi-dimensional quantitative framework for reasoning-data management, evaluating datasets along <b>6 orthogonal dimensions</b>. Counterintuitively, selectively adding "distorted" (model-disagreed) or "mismatched" (low-relevance) samples — normally discarded — can <b>outperform conventional clean data</b> on advanced reasoning benchmarks, showing dataset <b>structure</b> (not size) is decisive.
+            <b>Problem:</b> reasoning-data pipelines usually optimize for scale and surface cleanliness, while the effect of data structure is poorly understood. <b>Method:</b> MCSQ evaluates data along <b>6 orthogonal dimensions</b> and uses controlled composition experiments. <b>Conclusion:</b> selectively retaining "distorted" or "mismatched" samples can <b>outperform conventional clean data</b>, showing that dataset <b>structure</b> matters more than size in this regime.
           </span>
         </div>
         <div class="pub-links">
@@ -1212,7 +1222,7 @@
       <div class="tl-item">
         <div class="tl-head">Algorithm Intern (Research) · <a href="https://www.jd.com/" target="_blank" rel="noopener">JD (JINGDONG)</a></div>
         <div class="tl-meta">2025.07 — 2026.03 · Beijing</div>
-        <div class="tl-desc" data-i18n="exp.desc.jd">负责大模型后训练（Post-training），通过 SFT + GRPO 对齐流程提升模型数学推理能力；完成一作论文《Averaged Evaluation Masks Capability Trade-Offs》（IGSP 剪枝校准，审稿中）；参与 FlowTrain 项目（工业级视觉-语言模型的流式解耦训练）。</div>
+        <div class="tl-desc" data-i18n="exp.desc.jd">围绕 Qwen2.5-Math-1.5B / GSM8K 搭建数学推理后训练流程：基线准确率 17.59%，SFT 达到 76.20%，专家迭代达到 71.80%，GRPO-Clip（2x off-policy）达到 79.99%；完成一作论文《Averaged Evaluation Masks Capability Trade-Offs》（IGSP 剪枝校准，审稿中）。参与 FlowTrain 工业级 VLM 流式解耦训练，负责文献调研与实验设计；在 256 个 64GB NPU、VLM-6B/32B/72B 上验证最高 1.7x 吞吐提升与 52.9% MFU。</div>
       </div>
       <div class="tl-item">
         <div class="tl-head">Algorithm Engineer Intern · <a href="https://chuangxin.com/" target="_blank" rel="noopener">Sinovation Ventures &amp; Syneron</a></div>
@@ -1239,7 +1249,7 @@
           <span class="proj-role">项目负责人</span>
         </div>
         <div class="proj-desc">
-          <b>系统性中文 LLM 全栈构建课程</b> — 完整复现 Stanford CS336 全部 <b>15 章</b> + <b>6 个渐进式作业</b>，从 Tokenizer 手写、Transformer / MoE 架构、CUDA / Triton GPU 编程、分布式训练 (FSDP / ZeRO)、Scaling Laws、推理优化一路到对齐 (SFT / DPO / GRPO)。不只是汉化：补充中文学习者所需的数学 / 工程前置，案例更贴近 <b>Qwen / DeepSeek</b> 等国产开源生态。
+          <b>项目负责人</b>，负责 PyTorch 与资源核算、Scaling Laws、评估与基准测试、可验证奖励的强化学习、多模态模型等章节的内容整理与全文审阅。课程覆盖 Tokenizer、Transformer/MoE、CUDA/Triton、分布式训练、推理优化及 SFT/DPO/GRPO，累计 <b>1.2k+ stars</b>、<b>124 forks</b>。
         </div>
         <div class="proj-topics">
           <span class="proj-topic">LLM</span>
@@ -1248,7 +1258,7 @@
           <span class="proj-topic">Distributed</span>
           <span class="proj-topic">SFT / RLHF / GRPO</span>
         </div>
-        <div class="proj-stats">⭐ <b>1,100+</b> · 🔀 <b>116</b> · Datawhale · 2024—now</div>
+        <div class="proj-stats">⭐ <b>1,200+</b> · 🔀 <b>124</b> · Datawhale · 2024—now</div>
       </div>
 
       <div class="proj glow">
@@ -1257,7 +1267,7 @@
           <span class="proj-role role-contrib">核心贡献者</span>
         </div>
         <div class="proj-desc">
-          <b>吴恩达大模型系列课程的中文版</b> — 完整翻译复现 <b>11 门</b>课程（<b>4 门必修 + 7 门选修</b>），覆盖 Prompt Engineering、LangChain、RAG、模型微调、Gradio / wandb 评估。配套中英双语字幕、在线阅读站点与离线 PDF，<b>国内流畅访问</b>。
+          <b>吴恩达大模型系列课程的中文版</b>（2023.05—2024.03）— 负责 PDF 版完整内容编写，基于 LangChain 构建 Agent 模块与应用模型，覆盖 prompts/parsers、Chains/Memory、文档问答复现；项目累计 <b>21.9k+ stars</b>。
         </div>
         <div class="proj-topics">
           <span class="proj-topic">Prompt</span>
@@ -1265,7 +1275,7 @@
           <span class="proj-topic">LangChain</span>
           <span class="proj-topic">Fine-tuning</span>
         </div>
-        <div class="proj-stats">⭐ <b>24,400+</b> · 🔀 <b>2,900+</b> · Datawhale</div>
+        <div class="proj-stats">⭐ <b>21,900+</b> · Datawhale · 核心贡献者</div>
       </div>
 
       <div class="proj glow">
@@ -1274,7 +1284,7 @@
           <span class="proj-role role-contrib">核心贡献者</span>
         </div>
         <div class="proj-desc">
-          <b>面向小白开发者的大模型应用实战</b> — 一门课从零搭建个人知识库助手。覆盖 <b>LLM API 统一封装</b>（百度文心 / 讯飞星火 / 智谱）、向量数据库、检索问答链、<b>Streamlit 部署</b>、迭代评估。第三部分收录真实开源案例解析。阿里云学生机即可完成，<b>无 GPU 要求</b>。
+          <b>面向开发者的大模型应用开发教程</b>（2023.06—至今）— 负责从 0 到 1 拆解并重构知识库助手与 RAG 案例，完成多家 LLM API 的统一封装，结合 Chroma、LangChain、Streamlit/Gradio 降低应用开发门槛；项目累计 <b>10.5k+ stars</b>。
         </div>
         <div class="proj-topics">
           <span class="proj-topic">LLM Apps</span>
@@ -1282,7 +1292,7 @@
           <span class="proj-topic">LangChain</span>
           <span class="proj-topic">Streamlit</span>
         </div>
-        <div class="proj-stats">⭐ <b>13,600+</b> · 🔀 <b>1,380+</b> · Datawhale</div>
+        <div class="proj-stats">⭐ <b>10,500+</b> · Datawhale · 核心贡献者</div>
       </div>
 
       <div class="proj glow">
@@ -1709,7 +1719,7 @@
         'nav.blog': 'Blog', 'nav.shelf': 'Shelf', 'nav.edu': 'Education',
         'nav.exp': 'Experience', 'nav.proj': 'Projects', 'nav.honors': 'Honors',
         'nav.talks': 'Talks',
-        'status.badge': 'PhD Candidate @ SJTU · 2024 — present',
+        'status.badge': 'PhD Candidate @ SJTU · Expected graduation: Jun 2028',
         'hero.working': 'Working on ',
         'section.about': 'About', 'section.now': "What I'm Doing Now",
         'section.stats': 'Academic Stats', 'section.pubs': 'Publications',
@@ -1732,8 +1742,8 @@
         'shelf.now': '📖 Now reading', 'shelf.queue': '📚 On the shelf',
         'btn.email': 'Email Me', 'btn.cv': 'View CV', 'btn.zh': '中文版',
         // v2.16 — partial body translations
-        'about.bio1': 'I’m a PhD candidate at the School of Computer Science and Engineering, Shanghai Jiao Tong University, advised by Prof. Jianfeng Xu (许建峰). My research focuses on natural language processing, LLM post-training (SFT / RL / OPD), and LLM-based agents. I have hands-on experience with agentic-RL methods including GRPO, OPD, OPSD, GSPO, DAPO, Search-R1, ReTool, ALFWorld, Vision GRPO, and Slime.',
-        'about.bio2': 'Beyond research, I’m an active open-source contributor to the Datawhale community. My repositories llm-cookbook (24k+ ★) and llm-universe (14k+ ★) are widely used Chinese-language tutorials for LLM engineering. I also co-led the Chinese localization of Stanford’s CS336 course.',
+        'about.bio1': 'I am a PhD candidate in Computer Science and Engineering at Shanghai Jiao Tong University, advised by Prof. Jianfeng Xu, with expected graduation in June 2028. My research focuses on LLM post-training, reasoning, and agentic reinforcement learning. I have published first-author work at EMNLP 2025 Findings and built end-to-end SFT/GRPO pipelines from data curation and rollout design to evaluation and analysis.',
+        'about.bio2': 'In industry, I worked on Qwen2.5-Math-1.5B post-training and FlowTrain, an industrial VLM training system. Beyond research, I am the project lead of diy-llm (1.2k+ stars, 124 forks) and a core contributor to llm-cookbook (21.9k+ stars) and llm-universe (10.5k+ stars).',
         'about.interests': 'Research Interests',
         'about.collaborate': 'Open to research collaboration',
         'about.collaborate.desc': 'if you work on any of the above, drop me a line.',
@@ -1759,12 +1769,12 @@
         'edu.desc.me': 'Chongqing University · Joint Bioengineering &amp; Medical program · Advisor: <a href="https://med.cqu.edu.cn/info/1160/3556.htm">Qian Cheng (钱程)</a>',
         'edu.title.be': 'B.E. in Computer Science and Technology',
         'edu.desc.be': 'Xi’an Jiaotong University City College',
-        'exp.desc.jd': 'Led LLM post-training, improving mathematical reasoning via SFT + GRPO alignment; authored the first-author paper "Averaged Evaluation Masks Capability Trade-Offs" (IGSP pruning calibration, under review); contributed to FlowTrain (flow-based decoupled training for industrial vision-language models).',
+        'exp.desc.jd': 'Built a Qwen2.5-Math-1.5B/GSM8K post-training pipeline: baseline 17.59% accuracy, SFT 76.20%, Expert Iteration 71.80%, and GRPO-Clip (2x off-policy) 79.99%; designed rollout/evaluation protocols and analyzed learning-rate, prompt, normalization, and clipping ablations. Authored the first-author IGSP pruning-calibration paper. For FlowTrain, led literature review and experiment design; on 256 64GB NPUs and VLM-6B/32B/72B workloads, the system reached up to 1.7x throughput and 52.9% MFU.',
         'exp.desc.sinovation': 'Pre-training of large language models for proteins / peptides.',
         'exp.desc.datawhale': 'Applied machine learning, deep learning, and large-model algorithms to real-world applications.',
         // v2.17 — TLDR (EN fallback: restore original English when toggling back)
         'tldr.igsp': 'We dissect <b>15 calibration sources</b> for LLM pruning under LLaMA-3.1-8B and find that the famous <b>2.85-point</b> averaged gap masks a <b>51.9-point Code-vs-General</b> trade-off — <b>IGSP</b> (information-guided self-calibration) closes <b>49%</b> of the gap to real multi-source data <b>without any pretraining-corpus access</b>, beating the strongest single source by <b>8.8 points</b> at 60% SparseGPT sparsity.',
-        'tldr.emnlp': 'Introduces <b>MCSQ</b>, the first multi-dimensional quantitative framework for reasoning-data management, evaluating datasets along <b>6 orthogonal dimensions</b>. Counterintuitively, selectively adding "distorted" (model-disagreed) or "mismatched" (low-relevance) samples — normally discarded — can <b>outperform conventional clean data</b> on advanced reasoning benchmarks, showing dataset <b>structure</b> (not size) is decisive.',
+        'tldr.emnlp': '<b>Problem:</b> reasoning-data pipelines often optimize for scale and surface cleanliness without measuring data structure. <b>Method:</b> MCSQ evaluates data along <b>6 orthogonal dimensions</b> and uses controlled composition experiments. <b>Conclusion:</b> selectively retaining "distorted" or "mismatched" samples can <b>outperform conventional clean data</b>, showing that dataset <b>structure</b> matters more than size in this regime.',
         'tldr.bmc': '<b>TransBindpMHCI</b> is a pan-specific MHC-I binding predictor trained on <b>1.4M mass-spectrometry peptides</b>, using a <b>dual-tier Transformer encoder</b> for stronger feature extraction with reduced complexity. It supports peptides of <b>8–15 amino acids</b>, achieves <b>cross-species (human + murine)</b> prediction, and outperforms existing methods in accuracy, efficiency, and generalizability — validated on HPV-vaccine and tumor-neoantigen datasets.',
         'tldr.airev': 'We generalize compression-style information metrics to <b>two unified forms</b> — <b>OIT</b> and <b>MLT-MF</b> — the only two metrics that consistently correlate with capability retention across tasks, turning "information" into a drop-in training-efficiency objective for any AI model.',
         'tldr.semrd': 'Introduces a <b>closure-fidelity</b> perspective answering a more fundamental question than "how to compress": <b>which remote evidence is truly indispensable</b> when the ego vehicle can infer the rest locally? <b>SemRD-V2X</b> operationalizes the derived principle (transmit compact evidence, recover derivable context) via exact-budget BEV selection + pointwise compression + masked reconstruction — cutting feature payload <b>26.6×</b> while <b>improving</b> AP@0.5/0.7 by <b>4.13/8.57</b> points with only <b>3.81%</b> extra latency.',
@@ -1780,7 +1790,7 @@
         'nav.blog': '博客', 'nav.shelf': '书架', 'nav.edu': '教育',
         'nav.exp': '经历', 'nav.proj': '项目', 'nav.honors': '荣誉',
         'nav.talks': '分享',
-        'status.badge': '上海交通大学 博士在读 · 2024 — 至今',
+        'status.badge': '上海交通大学 博士在读 · 预计 2028 年 6 月毕业',
         'hero.working': '研究方向：',
         'section.about': '关于我', 'section.now': '我最近在做什么',
         'section.stats': '学术指标', 'section.pubs': '发表论文',
@@ -1803,8 +1813,8 @@
         'shelf.now': '📖 正在读', 'shelf.queue': '📚 待读',
         'btn.email': '发邮件', 'btn.cv': '查看简历', 'btn.zh': 'EN',
         // v2.16 — partial body translations
-        'about.bio1': '我是上海交通大学计算机科学与工程学院的博士研究生，导师是许建峰教授。我的研究方向聚焦于<strong>自然语言处理</strong>、<strong>大模型后训练（SFT / RL / OPD）</strong>与<strong>基于 LLM 的智能体</strong>。我熟练掌握 agentic-RL 相关方法，包括 GRPO、OPD、OPSD、GSPO、DAPO、Search-R1、ReTool、ALFWorld、Vision GRPO 与 Slime。',
-        'about.bio2': '研究之外，我也是 Datawhale 社区的活跃开源贡献者。我的仓库 <a href="https://github.com/datawhalechina/llm-cookbook">llm-cookbook</a>（24k+ ★）与 <a href="https://github.com/datawhalechina/llm-universe">llm-universe</a>（14k+ ★）是国内广泛使用的大模型工程中文教程。此外，我联合主导了斯坦福 <a href="https://github.com/datawhalechina/diy-llm">CS336</a> 课程的中文化工作。',
+        'about.bio1': '我是上海交通大学计算机科学与工程学院博士研究生，导师为许建峰教授，预计 2028 年 6 月毕业。我的研究聚焦<strong>大模型后训练、推理与 Agentic RL</strong>，已在 EMNLP 2025 Findings 发表一作论文，并搭建了从数据构建、rollout、SFT/GRPO 训练到评测分析的完整流程。',
+        'about.bio2': '产业实践中，我参与 Qwen2.5-Math-1.5B 数学推理后训练与 FlowTrain 工业级 VLM 训练系统。开源方面，我负责 diy-llm 项目（1.2k+ stars、124 forks），并作为核心贡献者参与 <a href="https://github.com/datawhalechina/llm-cookbook">llm-cookbook</a>（21.9k+ stars）和 <a href="https://github.com/datawhalechina/llm-universe">llm-universe</a>（10.5k+ stars）。',
         'about.interests': '研究方向',
         'about.collaborate': '欢迎学术合作',
         'about.collaborate.desc': '如果你在以上方向工作，欢迎随时联系我。',
@@ -1829,12 +1839,12 @@
         'edu.desc.me': '重庆大学 · 生物工程学院+医学院联合培养 · 医工交叉方向 · 导师：<a href="https://med.cqu.edu.cn/info/1160/3556.htm">钱程</a>',
         'edu.title.be': '工学学士 · 计算机科学与技术',
         'edu.desc.be': '西安交通大学城市学院',
-        'exp.desc.jd': '负责大模型后训练（Post-training），通过 SFT + GRPO 对齐流程提升模型数学推理能力；完成一作论文《Averaged Evaluation Masks Capability Trade-Offs》（IGSP 剪枝校准，审稿中）；参与 FlowTrain 项目（工业级视觉-语言模型的流式解耦训练）。',
+        'exp.desc.jd': '围绕 Qwen2.5-Math-1.5B / GSM8K 搭建数学推理后训练流程：基线准确率 17.59%，SFT 达到 76.20%，专家迭代达到 71.80%，GRPO-Clip（2x off-policy）达到 79.99%；完成 rollout、评测协议及学习率、提示、归一化和裁剪消融。完成一作 IGSP 剪枝校准论文。参与 FlowTrain 工业级 VLM 流式解耦训练，负责文献调研与实验设计；在 256 个 64GB NPU、VLM-6B/32B/72B 上验证最高 1.7x 吞吐提升与 52.9% MFU。',
         'exp.desc.sinovation': '面向蛋白质 / 多肽的大语言模型预训练。',
         'exp.desc.datawhale': '将机器学习、深度学习及大模型算法应用于实际场景。',
         // v2.17 — paper TL;DRs (ZH only)
         'tldr.igsp': '我们剖析了 LLaMA-3.1-8B 上 15 个剪枝校准源，发现著名的 2.85 分平均差距背后藏着 <b>51.9 分的 Code-vs-General 能力 trade-off</b>。<b>IGSP</b>（information-guided self-calibration）无需任何预训练语料，把真实多源校准的差距缩小了 <b>49%</b>，在 60% SparseGPT 稀疏度下比最强单源还高 <b>8.8 分</b>。',
-        'tldr.emnlp': '提出 <b>MCSQ</b> — 首个多维量化推理数据管理框架，从 <b>6 个正交维度</b>评估数据集。反直觉的是：选择性加入"失真"（模型分歧）或"错配"（低相关）样本（通常被丢弃）反而能在高级推理 benchmark 上<b>超越传统干净数据</b>，说明数据<b>结构</b>（而非规模）才是决定性因素。',
+        'tldr.emnlp': '<b>问题：</b>推理数据流程通常只追求规模和表面干净度，缺少对数据结构的量化。<b>方法：</b>提出 MCSQ，从 <b>6 个正交维度</b>评估数据，并进行受控数据组合实验。<b>结论：</b>选择性保留"失真"或"错配"样本，反而可以<b>超越传统干净数据</b>，说明在该实验范围内，数据<b>结构</b>比规模更关键。',
         'tldr.bmc': '<b>TransBindpMHCI</b> 是一个 pan-specific MHC-I 结合预测器，基于 <b>140 万条质谱肽段</b>建模，采用 <b>双层 Transformer 编码器</b>在增强特征提取的同时降低计算复杂度。支持 <b>8–15 个氨基酸</b>肽段、<b>跨物种（人 + 小鼠）</b>预测，在准确性、计算效率和泛化能力上均优于现有方法 — 并在 HPV 疫苗与肿瘤新抗原数据集上得到验证。',
         'tldr.airev': '我们将压缩式信息度量推广为 <b>两种统一形式</b> — <b>OIT</b> 和 <b>MLT-MF</b> — 唯一两个在跨任务中持续与能力保持率相关的指标，把"信息"变成任意 AI 模型的训练效率即插即用目标。',
         'tldr.semrd': '提出 <b>closure-fidelity</b> 视角，回答一个比"如何压缩"更根本的问题：当自车能本地推断其余部分时，<b>哪些远端证据真正不可或缺</b>？<b>SemRD-V2X</b> 将推导出的原则（传输紧凑证据、恢复可推导上下文）落地为 exact-budget BEV 选择 + 逐点压缩 + 掩码重建 — 特征载荷削减 <b>26.6×</b>，同时 AP@0.5/0.7 <b>提升 4.13/8.57</b> 个点，仅增 <b>3.81%</b> 延迟。',

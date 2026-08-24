@@ -44,7 +44,7 @@ a:link{color:#224B8D}
 	 <A HREF="#Blog" style="color:#224B8D">公众号文章</A>
 <br />
 <br />
-邮箱：xuhu6736@sjtu.edu.cn <br />
+邮箱：xuhu6736@sjtu.edu.cn；手机：19821488467；预计 2028 年 6 月毕业；求职方向：LLM Post-training / Reasoning / Agentic RL<br />
 <p style="margin-top: 20px;">
 				<a href="mailto:xuhu6736@sjtu.edu.cn" target="_blank"><img src="../Files/icon/email.png" height="32px" style="margin-bottom:-1px"></a>&nbsp;
 				<a href="https://scholar.google.com/citations?user=5R1pwnIAAAAJ&hl=zh-CN" target="_blank"><img src="../Files/icon/google_scholar.png" height="30px" style="margin-bottom:0px"></a>&nbsp;
@@ -55,7 +55,7 @@ a:link{color:#224B8D}
 </td></tr></table>
 
 <A NAME="News"><h2>个人简介</h2></A>
-徐虎是上海交通大学计算机学院的博士研究生，导师是许建峰教授。他的研究方向聚焦于<b>自然语言处理</b>、<b>大模型后训练（SFT / RL / OPD）</b>与<b>基于 LLM 的智能体</b>。他熟练掌握 agentic-RL 相关方法，包括 GRPO、OPD、OPSD、GSPO、DAPO、Search-R1、ReTool、ALFWorld、Vision GRPO 与 Slime。他在 EMNLP、BMC Bioinformatics 等顶级会议和期刊发表论文，是活跃的开源贡献者，参与项目包括 <a href="https://github.com/datawhalechina/diy-llm" target="_blank" style="color:#224B8D">diy-llm</a>（500+ stars）和 <a href="https://github.com/datawhalechina/llm-universe" target="_blank" style="color:#224B8D">llm-universe</a>（12.2k stars）。他曾在 Datawhale、创新工场和京东实习，从事大语言模型训练与应用工作。
+徐虎是上海交通大学计算机学院的博士研究生，导师为许建峰教授，预计 2028 年 6 月毕业。研究聚焦<b>大模型后训练、推理与 Agentic RL</b>，已在 EMNLP 2025 Findings 发表一作论文，并搭建了从数据构建、rollout、SFT/GRPO 训练到评测分析的完整流程。产业实践中参与 Qwen2.5-Math-1.5B 数学推理后训练与 FlowTrain 工业级 VLM 训练系统；开源方面负责 <a href="https://github.com/datawhalechina/diy-llm" target="_blank" style="color:#224B8D">diy-llm</a>（1.2k+ stars、124 forks），并作为核心贡献者参与 <a href="https://github.com/datawhalechina/llm-cookbook" target="_blank" style="color:#224B8D">llm-cookbook</a>（21.9k+ stars）和 <a href="https://github.com/datawhalechina/llm-universe" target="_blank" style="color:#224B8D">llm-universe</a>（10.5k+ stars）。
 
 <A NAME="Interest"><h2>研究方向</h2></A>
 我的研究领域为自然语言处理与大语言模型。目前，我专注于以下研究课题：
@@ -76,7 +76,7 @@ a:link{color:#224B8D}
 
 <A NAME="Experience"><h2>实习经历</h2></A>
 <ul>
-<li>2025.07-2026.03 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 算法实习生（研究型），<a href="https://www.jd.com/" target="_blank" style="color:#224B8D">京东（JD）</a>，北京。负责大模型后训练（Post-training），通过 SFT + GRPO 对齐流程提升模型数学推理能力；完成一作论文《Averaged Evaluation Masks Capability Trade-Offs》（IGSP 剪枝校准，审稿中）；参与 FlowTrain 项目（工业级视觉-语言模型的流式解耦训练）。</li>
+<li>2025.07-2026.03 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 算法实习生（研究型），<a href="https://www.jd.com/" target="_blank" style="color:#224B8D">京东（JD）</a>，北京。围绕 Qwen2.5-Math-1.5B / GSM8K 搭建数学推理后训练流程：基线准确率 17.59%，SFT 达到 76.20%，专家迭代达到 71.80%，GRPO-Clip（2x off-policy）达到 79.99%；完成 rollout、评测协议及学习率、提示、归一化和裁剪消融。完成一作 IGSP 剪枝校准论文。参与 FlowTrain 工业级 VLM 流式解耦训练，负责文献调研与实验设计；在 256 个 64GB NPU、VLM-6B/32B/72B 上验证最高 1.7x 吞吐提升与 52.9% MFU。</li>
 <li>2023.12-2024.01 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 算法工程师实习生，<a href="https://chuangxin.com/" target="_blank" style="color:#224B8D">创新工场 &amp; Syneron</a>，北京。蛋白质/多肽大语言模型预训练。</li>
 <li>2023.06-2023.08 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 算法工程师实习生，<a href="https://datawhale.cn/" target="_blank" style="color:#224B8D">Datawhale</a>，线上。将机器学习、深度学习及大模型算法应用于实际场景。</li>
 </ul>
@@ -92,6 +92,7 @@ a:link{color:#224B8D}
 [<a href="https://aclanthology.org/2025.findings-emnlp.616/" target="_blank" style="color:#224B8D">链接</a>]
 </span>
 </p>
+<p>问题：推理数据流程通常只追求规模和表面干净度；方法：提出 MCSQ，从 6 个正交维度评估数据并进行受控组合实验；结论：选择性保留“失真”或“错配”样本可超越传统干净数据，说明数据结构比规模更关键。</p>
 </ul>
 </font>
 
@@ -164,13 +165,13 @@ a:link{color:#224B8D}
 <font size="3">
 <ul>
 
-<li><a href="https://github.com/datawhalechina/diy-llm" target="_blank" style="color:#224B8D"><b>diy-llm</b>：</a>联合主导了斯坦福 CS336 的中文本地化工作，该项目是一套系统、前沿的全栈大语言模型构建课程，涵盖 Tokenizer 设计、Transformer 与 MoE 架构、GPU 编程（CUDA/Triton）、分布式训练、Scaling Laws、推理优化及模型对齐（SFT / RLHF / GRPO），包含 6 个递进式实践作业，GitHub 已获 <b><font color="#BB2222">1k+ stars</font></b>。<a href="https://github.com/datawhalechina/diy-llm" target="_blank" style="color:#224B8D"><span style="vertical-align: middle;"><img src="https://img.shields.io/github/stars/datawhalechina/diy-llm"></span></a>
+<li><a href="https://github.com/datawhalechina/diy-llm" target="_blank" style="color:#224B8D"><b>diy-llm</b>（项目负责人）：</a>负责 PyTorch 与资源核算、Scaling Laws、评估与基准测试、可验证奖励的强化学习、多模态模型等章节的内容整理与全文审阅；课程覆盖 Tokenizer、Transformer/MoE、CUDA/Triton、分布式训练、推理优化及 SFT/DPO/GRPO，累计 <b><font color="#BB2222">1.2k+ stars</font></b>、<b><font color="#BB2222">124 forks</font></b>。</li>
 </li>
 
-<li><a href="https://github.com/datawhalechina/llm-cookbook" target="_blank" style="color:#224B8D"><b>llm-cookbook</b>：</a>基于吴恩达课程的中文大语言模型教程，GitHub 已获 <b><font color="#BB2222">24,000+ stars</font></b>。<a href="https://github.com/datawhalechina/llm-cookbook" target="_blank" style="color:#224B8D"><span style="vertical-align: middle;"><img src="https://img.shields.io/github/stars/datawhalechina/llm-cookbook"></span></a>
+<li><a href="https://github.com/datawhalechina/llm-cookbook" target="_blank" style="color:#224B8D"><b>llm-cookbook</b>（核心贡献者，2023.05-2024.03）：</a>负责 PDF 版完整内容编写，基于 LangChain 构建 Agent 模块与应用模型，覆盖 prompts/parsers、Chains/Memory、文档问答复现；累计 <b><font color="#BB2222">21.9k+ stars</font></b>。</li>
 </li>
 
-<li><a href="https://github.com/datawhalechina/llm-universe" target="_blank" style="color:#224B8D"><b>llm-universe</b>：</a>大语言模型应用开发实战教程，GitHub 已获 <b><font color="#BB2222">14,000+ stars</font></b>。<a href="https://github.com/datawhalechina/llm-universe" target="_blank" style="color:#224B8D"><span style="vertical-align: middle;"><img src="https://img.shields.io/github/stars/datawhalechina/llm-universe"></span></a>
+<li><a href="https://github.com/datawhalechina/llm-universe" target="_blank" style="color:#224B8D"><b>llm-universe</b>（核心贡献者，2023.06-至今）：</a>负责从 0 到 1 拆解并重构知识库助手与 RAG 案例，完成多家 LLM API 统一封装，结合 Chroma、LangChain、Streamlit/Gradio 降低应用开发门槛；累计 <b><font color="#BB2222">10.5k+ stars</font></b>。</li>
 </li>
 
 <li>更多开源内容请访问我的 <a href="https://github.com/xuhu0115" target="_blank" style="color:#224B8D">GitHub</a>。
